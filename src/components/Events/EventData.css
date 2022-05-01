@@ -1,0 +1,48 @@
+.event-container{
+    margin-bottom: 30px;
+    
+}
+.event-button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FDFCF0;
+    margin: auto;
+    height: 40px;
+}
+.event-logo{
+    width: 100%;
+}
+.event-logo>img{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.event-button {
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #E71A0F;
+    height: 100%;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.event-news {
+    margin-top: 20px;
+    display: none;
+
+}
+
+.event-member {
+    margin-top: 20px;
+    display: none;
+}
+
+.active-event {
+    display: block;
+}

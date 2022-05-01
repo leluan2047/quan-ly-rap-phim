@@ -1,0 +1,15 @@
+.ad-container{
+    margin-left: 10vw;
+    margin-top: 5vh;
+    margin-bottom: 25px;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    
+}
+
+.ad-image{
+    margin-bottom: 15px;
+}
