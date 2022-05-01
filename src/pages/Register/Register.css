@@ -1,0 +1,144 @@
+.r-register {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffcc;
+}
+h2{
+    color: white;
+    background-color: red;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 20px 20px 10px ;
+}
+span
+{
+    color: red;
+}
+.r-register h2 span{
+    font-size: 2.5vw;
+    margin: 0;
+    color: #ddd;
+    cursor: pointer;
+    margin: 0 20px;
+    padding: 20px 15px 8px;
+    text-transform: uppercase;
+}
+.r-register h2 span:hover{
+    
+    color: black;
+    
+}
+/* .r-login h2 span.active{
+    
+    border-bottom: 3px solid #fff;
+    
+} */
+.cgvfc-form-register-content
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.cgv-register-forgotp-link
+{
+    padding: 0 20px 20px;
+    text-align: center;
+}
+.cgv-signup-form
+{
+    padding: 20px 20px 5px;
+    display: block;
+    margin-top: 0;
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+   
+    
+}
+.r-register input[type=submit]
+{
+    width: 100%;
+    background-color: #e71a0f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase
+}
+.r-register input[type=submit]:hover {
+    background-color: black;
+}
+.vgvfc form-register-content
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+fieldset
+{
+    border: 0px;
+    
+    /* margin: auto;
+    box-sizing: border-box;
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 0px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial; */
+}
+:root
+{
+    --width: 45% ;
+    --height: 400px;
+    --href_color: #33ffff;
+    --href_size: 20px;
+
+}
+label
+{
+  font-weight: 600;
+}
+div{
+  display: block
+}
+.href 
+{
+  color: var(--href_color);
+  font-size: var(--href_size);
+  text-decoration: none;
+}
+.input-register
+{
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.input-register1
+{
+  
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
