@@ -1,0 +1,138 @@
+.footer-container {
+    background: #FDFCF0;
+
+    .footer-donor {
+        margin: auto;
+        width: 80vw;
+        display: flex;
+        justify-content: space-around;
+
+        .donor {
+            height: 35px;
+            width: 55px;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .footer-contact {
+        font-family: verdana, arial, sans-serif;
+        display: flex;
+        justify-content: space-around;
+        width: 950px;
+        margin: auto;
+
+        .footer-contact-block {
+            /* border: 1px solid red; */
+            width: 250px;
+            height: 200px;
+
+            .footer-contact-title {
+                text-align: left;
+                font-weight: bold;
+                margin-top: 15px;
+                margin-bottom: 30px;
+            }
+
+            .footer-contact-content {
+                text-align: left;
+
+                p {
+                    text-align: left;
+                    margin-top: -10px;
+                }
+            }
+
+            .special-contact-content {
+                /* border: 2px solid red; */
+                width: 70%;
+                height: 130px;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .footer-contact-image {
+                /* border: 1px solid red; */
+                width: 40px;
+                height: 40px;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .footer-special-image {
+
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .footer-infomation {
+        display: flex;
+        justify-content: flex-start;
+        width: 950px;
+        margin: auto;
+        margin-bottom: 20px;
+
+        .footer-infomation-logo {
+            height: 100px;
+            width: 50px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .footer-infomation-info {
+            text-align: left;
+            margin-left: 30px;
+
+            .footer-infomation-title {
+                font-weight: bold;
+                font-family: verdana, arial, sans-serif;
+            }
+
+            .footer-infomation-content {
+                p {
+                    margin-bottom: -2px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+
+        .footer-contact-block {
+            margin: 40px 0 -90px 25px;
+
+            .footer-contact-title {
+                display: none;
+            }
+
+            .special-contact-content {
+                margin-left: auto;
+            }
+        }
+
+
+    }
+
+    .footer-infomation {
+        width: 100%;
+    }
+}

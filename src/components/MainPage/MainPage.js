@@ -1,11 +1,11 @@
 import { React } from 'react'
+import "./MainPage.scss";
 import movieSection from "../../images/movieSection.png";
 import Carousel from 'react-elastic-carousel';
 import MediaCard from '../Card/MediaCard';
-import "./MainPage.css";
 import EventData from '../Events/EventData';
 import Advertisement from '../Advertisement/Advertisement';
-import Footer from '../Footer/Footer';
+
 
 function MainContent() {
   const breakPoints = [
@@ -37,11 +37,11 @@ function MainContent() {
         </Carousel>
       </div>
       <EventData></EventData>
-      <hr  width="87%" align="center" size="10px" color="#241D1E" />
+      <hr width="87%" align="center" size="10px" color="#241D1E" />
       <Advertisement></Advertisement>
-      <hr  width="100%" align="center" size="10px" color="#241D1E" />
-      <Footer></Footer>
+      <hr width="100%" align="center" size="10px" color="#241D1E" />
     </div>
+
   )
 }
 

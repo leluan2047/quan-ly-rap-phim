@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
+import "./Navbar.scss";
 import logo from '../../../src/logo.png';
 import { Link } from 'react-router-dom';
-import "./Navbar.css";
+
 function Navbar() {
     const [click,setClick] = useState(false);
     const [button,setButton] = useState(true);
@@ -16,7 +17,7 @@ function Navbar() {
     
   return (
     <div className='navbar'>
-        <div className='container'>
+        <div className='navbar-container'>
             <div className='container-menu'>
                 <Link to= '/' className='links'>
                     <i class="fa-solid fa-users-line"></i> Tuyển dụng
@@ -41,7 +42,7 @@ function Navbar() {
             </div>
             <div className='right-menu'>
                 <div className='menu'>
-                    <Link to='/'  className='links detail'>
+                    <Link to='/'  className='links'>
                         Phim
                     </Link>
                     <div className='menu-content'>
@@ -53,6 +54,12 @@ function Navbar() {
                     <Link to = '/'  className='links'>
                         Rạp CGV
                     </Link>
+                    <div className='menu-content'>
+                        <Link to='/a' className='links'>Rap Viet</Link>
+                        <Link to='/b' className='links'>Rap Duc</Link>
+                        <Link to='/b' className='links'>Rap Duc</Link>
+                       
+                    </div>
                 </div>
                 <div className='menu'>
                     <Link to = '/' className='links'>

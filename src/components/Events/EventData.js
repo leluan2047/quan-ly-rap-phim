@@ -1,11 +1,11 @@
 import { React, useState } from 'react'
+import "./EventData.scss";
 import Event from "../../images/event.png";
-import "./EventData.css";
 import Carousel from 'react-elastic-carousel';
 
 function EventData() {
     const [active, setActive] = useState(true);
-    
+
     const setNews = () => {
         setActive(true);
     }
@@ -30,7 +30,7 @@ function EventData() {
                 </div>
                 <div className='event-button' onClick={setMember}>
                     {
-                        active ?  "":<i class="fa-solid fa-hand-point-right"></i> 
+                        active ? "" : <i class="fa-solid fa-hand-point-right"></i>
                     } Thành viên
                 </div>
             </div>
