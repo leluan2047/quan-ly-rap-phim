@@ -2,7 +2,7 @@ import React  from 'react';
 import { useState } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
-import './Register.css'
+import './Register.scss'
 
 function Register() {
   const [password, setPassword] = useState(false);
@@ -11,8 +11,8 @@ function Register() {
   const [phone, setPhone] = useState(false);
   const [birthday, setBirthday] = useState(false);
   const [gender, setGender] = useState(false);
-  const validateEmail = (passval) => {
-    return passval.match(
+  const validateEmail = (emailval) => {
+    return emailval.match(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
   };
@@ -126,8 +126,7 @@ function Register() {
   return (
     <>
     
-    <div className="r-register" >
-   
+    <div className="register" >
         <div className='cgvfc-form-register-content'>
             <form className='cgv-signup-form' method='post' name = 'cgv-signup-form' id='cgv-signup-form' action='#'>
             
@@ -151,7 +150,7 @@ function Register() {
                 <p  id='errorbirthday'></p>
                 <label for="r-fname" class="gender-title">Giới tính<span>*</span> </label>
                 <br></br>
-                <label><input type="radio" name="r-gender" id="r-gender" value="1" class="validation-passed" ></input>Nam</label>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;            
+                <label><input type="radio" name="r-gender" id="r-gender" value="1" class="input-register1" ></input>Nam</label>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;            
                 <label><input class = 'input-register1' type="radio" name="r-gender" id="r-gender" value="2" required/>Nữ</label><br/>
                 <p  id='errorgender'></p>
                 <label for="r-city" >Khu vực<span>*</span>&emsp;</label>
@@ -241,8 +240,9 @@ function Register() {
                             <option value="026">CGV Buon Ma Thuot</option>
                               </select>
 
-         
+            <div className='submit-register'>
             <input type='submit' id ='cgv-btnlogin'  onClick={(e) =>Validate(e)} value='Đăng ký'></input>
+            </div>
             </form>
         </div>
     
