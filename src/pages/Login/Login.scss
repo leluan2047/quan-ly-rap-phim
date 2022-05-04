@@ -1,0 +1,75 @@
+.login {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffcc;
+    .cgvfc-form-login-content
+    {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        
+        .cgv-login-form
+        {
+            padding: 20px 20px 5px;
+            display: block;
+            margin-top: 0;
+            font-size: 17px;
+            font-family: 'Times New Roman', Times, serif;
+            .form-control
+            {
+                label
+                {
+                font-weight: 600;
+                }
+                .input-login
+                {
+                    width: 100%;
+                    padding: 10px;
+                    margin: 8px 0;
+                    display: inline-block;
+                    border-radius: 2px;
+                    border: 1px solid #ccc;
+                    box-sizing: border-box;
+                }
+                p{
+                    color: red;
+                    text-align: center;
+                    font-size: 15px;
+                }
+            }
+            .submit-login
+            {
+                input[type=submit]
+                {
+                    width: 100%;
+                    background-color: #e71a0f;
+                    color: white;
+                    padding: 14px 20px;
+                    margin: 8px 0;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    text-transform: uppercase
+                }
+                &:hover input[type=submit]
+                {
+                    background-color: black;
+                }
+            }
+            .cgv-login-forgotp-link
+            {   
+                padding: 0 20px 20px;
+                text-align: center;
+
+                a 
+                {
+                color: #33ffff;
+                font-size: 20px;
+                text-decoration: none;
+                }
+            }
+        }
+    }
+}
