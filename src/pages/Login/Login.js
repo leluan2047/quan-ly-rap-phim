@@ -1,15 +1,15 @@
 import React, { useEffect }  from 'react';
 import { useState } from 'react';
 import {  Router,Routes,Route,Link } from 'react-router-dom';
-import './Login.css'
+import './Login.scss'
 
  function Login() {
   const [password, setPassword] = useState(false);
   const [email, setEmail] = useState(false);
   // const [emailError, setEmailError] = useState('')
 
-  const validateEmail = (passval) => {
-    return passval.match(
+  const validateEmail = (emailval) => {
+    return emailval.match(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
   };
@@ -57,10 +57,10 @@ import './Login.css'
   
   return (
     <>
-    <div className="r-login" >
+    <div className="login" >
         <div className='cgvfc-form-login-content'>
             <form className='cgv-login-form' method='post' id='cgv-login-form'  action='#' >
-                <div id='correct'></div>
+                {/* <div id='correct'></div> */}
                 <div className='form-control'>
                   <label  >Email hoặc số điện thoại</label><br />
                   <input type='text' id='email' name='email' className='input-login' placeholder='Email hoặc số điện thoại' autoComplete='on' onBlur={checkEmail} required></input><br />
@@ -72,7 +72,9 @@ import './Login.css'
                   <small></small>
                   <p id='errorpassword'></p>
                 </div>
+                <div className='submit-login'>
                 <input type='submit' id ='cgv-btnlogin' value='Đăng nhập' onClick={(e) =>Validate(e)}></input>
+                </div>
                 <div className='cgv-login-forgotp-link'> <Link to= "/forgot" className='href '>Bạn muốn tìm lại mật khẩu?</Link></div>      
                 <div className='cgv-login-forgotp-link'></div>
                
