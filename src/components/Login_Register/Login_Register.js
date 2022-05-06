@@ -19,8 +19,8 @@ function Login_Register() {
         <>
         <div className='login-register'>
             <div className='bloc-tabs'>
-                <Link className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)} to='login' >ĐĂNG NHẬP </Link>
-                <Link className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)} to='register' >ĐĂNG KÝ</Link>
+                <Link className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)} to='/login' >ĐĂNG NHẬP </Link>
+                <Link className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)} to='/register' >ĐĂNG KÝ</Link>
             </div>
             <div className='content-tabs'> 
                 <div className={toggleState === 1 ? "content  active-content" : "content"}> 

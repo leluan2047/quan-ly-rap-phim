@@ -29,7 +29,7 @@ function Navbar() {
                 </Link>
             </div>
             <div className='container-menu'>
-                <Link to ='/'  className='links'>
+                <Link to ='/login'  className='links'>
                     <i class="fa-solid fa-user"></i> Đăng nhập/ Đăng ký
                 </Link>
             </div>
