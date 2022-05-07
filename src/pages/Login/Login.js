@@ -14,25 +14,7 @@ import Account from '../Account/Account';
 
   //  const history = useHistory();
   // const [emailError, setEmailError] = useState('')
-  async function login()
-  {
-    console.warn(emailvalue,passwordvalue)
-    let item = {emailvalue,passwordvalue}
-    let result = await fetch("",
-    {
-      method:"POST",
-      headers:
-      {
-        "Content-Type":"application/json",
-        "Accept":"application/json"
-      },
-      body: JSON.stringify(item)
-    }
-    );
-    result = await result.json();
-    localStorage.setItem("user-info",JSON.stringify(result))
-    //  history.push("/add")
-  }
+  
   const validateEmail = (emailval) => {
     return emailval.match(
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
