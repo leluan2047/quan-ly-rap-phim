@@ -7,34 +7,27 @@ import './Login.scss'
 
 function Login() {
   const [password, setPassword] = useState(false);
-  const [email, setEmail] = useState(false);
+  const [username, setUsername] = useState(false);
   const [passwordvalue, setPasswordvalue] = useState("");
-  const [emailvalue, setEmailvalue] = useState("");
+  const [usernamevalue, setUsernamevalue] = useState("");
   const [success, setSuccess] = useState(false)
 
   //  const history = useHistory();
   // const [emailError, setEmailError] = useState('')
 
-  const validateEmail = (emailval) => {
-    return emailval.match(
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-  };
-  const checkEmail = () => {
-    var emailval = document.getElementById('email').value
-    if (validateEmail(emailval)) {
-      document.getElementById("erroremail").innerHTML = "";
-      setEmail(true)
+  
+  const checkUsername = () => {
+    var usernameval = document.getElementById('username').value
+    if(usernameval ==="")
+    {
+      document.getElementById("errorusername").innerHTML = "Bạn cần điền đầy đủ thông tin";
+      setUsername(false)
     }
-    else if (emailval === "") {
-      document.getElementById("erroremail").innerHTML = "Bạn cần điền đầy đủ thông tin";
-      setEmail(false)
+    else 
+    {
+      document.getElementById("errorusername").innerHTML = "";
+      setUsername(true)
     }
-    else {
-      document.getElementById("erroremail").innerHTML = "Bạn đã nhập sai định dạng email";
-      setEmail(false)
-    }
-    //return false;
   }
   const checkPassword = () => {
     var passval = document.getElementById('password').value
@@ -48,7 +41,7 @@ function Login() {
     }
   }
   const Validate = () => {
-    if (!email | !password) { alert('Bạn vui lòng nhập đúng và đầy đủ thông tin') }
+    if (!username | !password) { alert('Bạn vui lòng nhập đúng và đầy đủ thông tin') }
     else {
       ////ĐĂNG NHẬP
     }
@@ -56,11 +49,11 @@ function Login() {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ emailvalue, passwordvalue })
+    console.log({ usernamevalue, passwordvalue })
 
     axios.post('/login',
       {
-        email: emailvalue,
+        username: usernamevalue,
         password: passwordvalue
       })
       .then(result => {
@@ -82,9 +75,9 @@ function Login() {
             <form className='cgv-login-form' id='cgv-login-form' onSubmit={handleSubmit} >
               {/* <div id='correct'></div> */}
               <div className='form-control'>
-                <label  >Email hoặc số điện thoại</label><br />
-                <input type='text' id='email' name='email' className='input-login' placeholder='Email hoặc số điện thoại' autoComplete='on' onBlur={checkEmail} onChange={(e) => setEmailvalue(e.target.value)} required></input><br />
-                <p id='erroremail'></p>
+                <label  >Username</label><br />
+                <input type='text' id='username' name='username' className='input-login' placeholder='Username' autoComplete='on' onBlur={checkUsername} onChange={(e) => setUsernamevalue(e.target.value)} required></input><br />
+                <p id='errorusername'></p>
               </div>
               <div className='form-control'>
                 <label >Mật khẩu</label><br />
@@ -93,8 +86,8 @@ function Login() {
                 <p id='errorpassword'></p>
               </div>
               <div className='submit-login'>
-                {/* <input type='submit' id ='cgv-btnlogin' value='Đăng nhập' onClick={login} onClick={(e) =>Validate(e)}></input> */}
-                <input type='submit' id='cgv-btnlogin' value='Đăng nhập' ></input>
+                <input type='submit' id ='cgv-btnlogin' value='Đăng nhập' onClick={(e) =>Validate(e)}></input>
+                {/* <input type='submit' id='cgv-btnlogin' value='Đăng nhập' ></input> */}
               </div>
               <div className='cgv-login-forgotp-link'> <Link to="/forgot" className='href '>Bạn muốn tìm lại mật khẩu?</Link></div>
               <div className='cgv-login-forgotp-link'></div>
