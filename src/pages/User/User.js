@@ -3,7 +3,7 @@ import React, { useState, useEffect, Component } from 'react';
 import { Link } from 'react-router-dom';
 import './User.scss';
 import  {axios}  from '../../axios';
- function Account()  {
+ function User()  {
 
     const [toggleState, setToggleState] = useState(1);
     const toggleTab = (index) => {
@@ -77,4 +77,4 @@ await axios.get('/users/me')
   
 }
 
-export default Account;
+export default User;
