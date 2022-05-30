@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
 import { axios } from '../../axios';
 import { Router, Routes, Route, Link } from 'react-router-dom';
 import './Login.scss'
-
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [password, setPassword] = useState(false);
@@ -11,7 +10,7 @@ function Login() {
   const [passwordvalue, setPasswordvalue] = useState("");
   const [usernamevalue, setUsernamevalue] = useState("");
   const [success, setSuccess] = useState(false)
-
+  const navigate = useNavigate();
   //  const history = useHistory();
   // const [emailError, setEmailError] = useState('')
 
@@ -40,36 +39,36 @@ function Login() {
       setPassword(true)
     }
   }
-  const Validate = () => {
-    if (!username | !password) { alert('Bạn vui lòng nhập đúng và đầy đủ thông tin') }
-    else {
-      ////ĐĂNG NHẬP
-    }
-
-  }
+  // const Validate = () => {
+  //   if (!username | !password) { alert('Bạn vui lòng nhập đúng và đầy đủ thông tin') }
+  //   else {
+  //     ////ĐĂNG NHẬP
+  //   }
+  // }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ usernamevalue, passwordvalue })
-
-    axios.post('/login',
-      {
-        username: usernamevalue,
-        password: passwordvalue
-      })
+    axios.post('/users/sign-in',{ username: usernamevalue, password: passwordvalue})
       .then(result => {
         console.log(result)
-        setSuccess(true)
+        localStorage.setItem('token',result.data.token)
+        alert(result.data.message)
+        if(result.data.user.type === 'admin')
+        {
+          navigate('/admin')
+        }
+        else{
+          navigate('/user')
+        }       
       })
-      .catch(error => {
-        console.log(error)
-      })
+      .catch(error => { console.log(error)
+        alert(error.response.data.message)
+      }
+      
+      )
   }
   return (
     <>
-      {success ? <p>
-        {/* <Account></Account> */}
-        Account viết chưa xong nên để tạm cái này
-      </p> : (
         <div className="login" >
           <div className='cgvfc-form-login-content'>
             <form className='cgv-login-form' id='cgv-login-form' onSubmit={handleSubmit} >
@@ -86,19 +85,14 @@ function Login() {
                 <p id='errorpassword'></p>
               </div>
               <div className='submit-login'>
-                <input type='submit' id ='cgv-btnlogin' value='Đăng nhập' onClick={(e) =>Validate(e)}></input>
-                {/* <input type='submit' id='cgv-btnlogin' value='Đăng nhập' ></input> */}
+                {/* <input type='submit' id ='cgv-btnlogin' value='Đăng nhập' onClick={(e) =>Validate(e)}></input> */}
+                <input type='submit' id='cgv-btnlogin' value='Đăng nhập' ></input>
               </div>
               <div className='cgv-login-forgotp-link'> <Link to="/forgot" className='href '>Bạn muốn tìm lại mật khẩu?</Link></div>
               <div className='cgv-login-forgotp-link'></div>
-
             </form>
-            {/* <Routes>
-            <Route path='/forgot' element={<Forgot/>}></Route>
-
-        </Routes> */}
           </div>
-        </div>)}
+        </div>
     </>
   );
 }

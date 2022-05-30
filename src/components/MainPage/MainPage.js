@@ -1,11 +1,11 @@
-import { React } from 'react'
+import { React, useEffect, useState } from 'react'
 import "./MainPage.scss";
 import movieSection from "../../images/movieSection.png";
 import Carousel from 'react-elastic-carousel';
 import MediaCard from '../Card/MediaCard';
 import EventData from '../Events/EventData';
 import Advertisement from '../Advertisement/Advertisement';
-
+import { getAllMovies } from '../../Service/Staff_service';
 
 function MainContent() {
   const breakPoints = [
@@ -13,13 +13,18 @@ function MainContent() {
     { width: 800, itemsToShow: 2 },
     { width: 1100, itemsToShow: 4 },
   ]
-  const data = [
-    'https://thegioidienanh.vn/stores/news_dataimages/hath/072019/09/15/5450_Main.jpg',
-    'https://thegioidienanh.vn/stores/news_dataimages/hath/072019/09/15/5450_Main.jpg',
-    'https://thegioidienanh.vn/stores/news_dataimages/hath/072019/09/15/5450_Main.jpg',
-    'https://thegioidienanh.vn/stores/news_dataimages/hath/072019/09/15/5450_Main.jpg',
-    'https://thegioidienanh.vn/stores/news_dataimages/hath/072019/09/15/5450_Main.jpg'
-  ];
+  const [movies, setMovies] = useState([])
+ 
+    useEffect( () =>
+        {
+            async function fetchData()
+            {
+                let res = await getAllMovies();
+                setMovies(res.data)
+            }
+            fetchData()
+        },[] 
+    )
   return (
     <div className='mainPage-container'>
       <div className='movie-section'>
@@ -28,9 +33,9 @@ function MainContent() {
       <div className='infinite-carousel'>
         <Carousel breakPoints={breakPoints}>
           {
-            data.map(item => {
+            movies.map(item => {
               return (
-                <MediaCard image={item}></MediaCard>
+                <MediaCard image={item.poster}></MediaCard>
               );
             })
           }

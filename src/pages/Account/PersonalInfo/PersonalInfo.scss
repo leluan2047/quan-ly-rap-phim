@@ -1,0 +1,125 @@
+.personal
+{
+    width: 100%;
+    background-color: #FFFFE0; 
+    
+    .page-title 
+    {
+        width: 100%;
+        font-size: 18px;
+        font-family: 'Times New Roman', Times, serif;
+        background: #222;
+        height: 42px;  
+     
+
+        h1
+        {
+            color: aliceblue;
+            text-align: center;
+            font-size: 30px;
+            padding-top: 7px;
+            margin-top: 0px;
+            
+        }
+    }
+    .form-PersonnalInfo
+    { 
+        padding-left: 20px;
+        padding-top: 20px;
+        margin-left: 5%;
+        .div1
+        {
+            display: flex;
+            .div_left
+            {
+                width: 50%;
+                float: left;
+                
+            }
+            .div_right
+            {
+                width: 50%;
+                float: left;
+                .change
+                {
+                     display: none;
+                }
+            }
+            span
+            {
+                color: red;
+            }
+            input
+            {
+                height: 28px;
+                margin: 10px 0;
+                padding-left: 10px;
+                width: 50%;
+                    
+            }
+            input[type=radio]
+            {
+                height: 13px;
+                margin: 10px 0;
+                width:auto;
+            }
+            input[type=checkbox]
+            {
+                height: 13px;
+                margin: 10px 0;
+                width:auto;
+            }
+            select 
+            {
+                height: 28px;
+                margin: 10px 0;
+                padding-left: 10px;
+                width: 50%;
+            }
+        }
+        .div2
+        {
+           
+            .option_info
+            {
+                .save 
+                {
+                    text-align: center;
+                    .button_save
+                    {
+                        float: none;
+                        border-radius: 5px;
+                        background-color: #e71a0f;
+                        margin-top: 10px;
+                        display: inline-block;
+                        padding: 6px 10px;
+                        border: 1px solid black;
+                        color: #FFFFFF;
+                        font-size: 13px;
+                        font-weight: normal;
+                        font-family: Verdana, Arial, sans-serif;
+                        line-height: 19px;
+                        text-transform: uppercase;
+                        vertical-align: middle;
+                        cursor: pointer;
+                    }
+                }
+               
+                a
+                {
+                    text-align: left;
+                    color: red;
+                    text-decoration: none;
+                }
+
+            }
+        }
+    }
+}
+
+// .change_password label
+// {
+//     font-weight: normal;
+// }
+
+
