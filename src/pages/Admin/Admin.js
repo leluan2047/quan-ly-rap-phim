@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Admin.scss';
 import  {axios}  from '../../axios';
 
-function Account()  {
+function Admin()  {
     const [toggleState, setToggleState] = useState(1);
     const toggleTab = (index) => {
       setToggleState(index);
@@ -57,4 +57,4 @@ function Account()  {
 
 }
 
-export default Account;
+export default Admin;
