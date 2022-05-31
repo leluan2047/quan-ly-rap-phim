@@ -4,22 +4,16 @@ const getMovieById = (inputId) =>
 {
     return axios.get(`...?id=${inputId}`)
 }
+const getProfile = () =>
+{
+    return axios.get('/users/me')
+}
 const getAllMovies = () =>
 {
-    // const getTodos = async () =>
-    //     {
-    //         axios.get("/movies")
-    //         .then(result => {
-    //             console.log(result) 
-    //           })
-    //         .catch( error =>{    
-    //            console.log(error)  
-    //            })  
-    //     }
-    // // getTodos()
-    // return getTodos()
     return axios.get("/movies")
+    
 }
 export {
-    getAllMovies
+    getAllMovies,
+    getProfile
 }

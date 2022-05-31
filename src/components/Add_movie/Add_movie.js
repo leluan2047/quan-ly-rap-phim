@@ -1,6 +1,6 @@
 import React  from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+import {axios} from '../../axios';
 import './Add_movie.scss'
 
 function Add_movie() {
@@ -37,21 +37,35 @@ function Add_movie() {
   const handleSubmit = (e) =>
   {
     e.preventDefault();
+    if(category ==="")
+    {
+      alert("Vui lòng họn thể loại")
+    }
     console.log({name,category,content,directors,country,time,trailer,poster,status})
+    axios.post('/movies', {tenPhim: name, maTheLoai: category, noiDungPhim: content, daoDien:directors,nuocSanXuat:country,thoiLuong:time,trailer:trailer, poster:poster,trangThai: status})
+      .then(result => {
+                        console.log(result.data.message) 
+                        alert(result.data.message)
+                      })
+      .catch( error =>{    
+                       console.log(error.message)  
+                                 
+                       })       
   }
   return (
     <>
     <div className="add-movie" >
-    <div className='title-add-movie'>
+    {/* <div className='title-add-movie'>
         <h1 >ADD&ensp;NEW&ensp;MOVIE</h1>
-      </div>
+      </div> */}
             <form className='form-add-movie' name = 'cgv-signup-form' id='cgv-signup-form' onSubmit={handleSubmit} >
                 <label for="name">Tên phim<span>*</span></label>
                 <input type="text" id="name" name="name" class="input-add" placeholder="Tên phim" required  onChange={(e) => setName(e.target.value)}></input>
                 <label for="category">Thể loại<span>*</span></label>
                 <select name="cars" id="cars" onChange={(e) => setCategory(e.target.value)}>
-                  <option value="1">Hoạt hình</option>
-                  <option value="0">Kinh dị</option>
+                  <option value="" >---Chọn thể loại phim---</option>
+                  <option value="1">Kiếm hiệp</option>
+                  <option value="2">Tình cảm</option>
                   <option value="3">Hài</option>
                 </select>
                 <label for="content">Nội dung <span>*</span></label>
@@ -70,8 +84,8 @@ function Add_movie() {
                 <input type="text" id="poster" name="poster" class="input-add" placeholder="Poster"  required onChange={(e) => setPoster(e.target.value)} ></input>             
                 <label for="status">Trạng thái</label>
                 <select name="cars" id="cars" onChange={(e) => setStatus(e.target.value)}>
-                  <option value="1">Đang chiếu</option>
-                  <option value="0">Không chiếu</option>
+                  <option value="Đã chiếu">Đã chiếu</option>
+                  <option value="đang chiếu">Đang chiếu</option>
                 </select>
             <div className='submit-add'>
             <input type='submit' id ='cgv-btnlogin'  value='Add new movie'></input>
