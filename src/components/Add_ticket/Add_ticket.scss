@@ -1,0 +1,96 @@
+.add-ticket {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffcc;
+    .title-add-ticket
+    {
+        width: 100%;
+        font-size: 18px;
+        font-family: 'Times New Roman', Times, serif;
+        background: #222;
+        height: 42px;  
+        h1
+        {
+            color: aliceblue;
+            text-align: center;
+            font-size: 30px;
+            padding-top: 7px;
+            margin-top: 0px;
+        }
+    }
+    .form-add-ticket
+    {
+        padding: 20px 20px 5px;
+        display: block;
+        margin-top: 0;
+        font-size: 17px;
+        font-family: 'Times New Roman', Times, serif;
+    
+        h1 
+        {
+            text-align: center;
+            margin-top: 0.01%;
+            margin-bottom: 0.5%;
+        }
+        label
+        {
+        font-weight: 600;
+        }
+        span
+        {
+            color: red;
+        }
+        .input-add
+        {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        select 
+        {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        p
+        {              
+            color: red;
+            text-align: center;
+            font-size: 15px;          
+        }
+        .submit-add
+        {
+            input[type=submit]
+            {
+                width: 100%;
+                background-color: #e71a0f;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                text-transform: uppercase
+            }
+            &:hover input[type=submit]
+            {
+                background-color: black;
+            }
+        }
+
+    }
+}
+
+
+
+
+
