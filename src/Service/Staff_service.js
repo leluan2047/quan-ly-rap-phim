@@ -11,9 +11,13 @@ const getProfile = () =>
 const getAllMovies = () =>
 {
     return axios.get("/movies")
-    
+}
+const getKhachHang = () =>
+{
+    return axios.get("/users/khach-hangs")
 }
 export {
     getAllMovies,
-    getProfile
+    getProfile,
+    getKhachHang
 }

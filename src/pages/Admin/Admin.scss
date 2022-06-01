@@ -27,6 +27,7 @@
             {
                padding-left: 10px;
                 // margin-left: -20px;
+                
                 li 
                 {
                     text-transform: uppercase;
@@ -45,7 +46,7 @@
                 { 
                     background: no-repeat scroll left center #ccc;
                     color: #fff;
-                    height: 20px;
+                    height: auto;
                     padding-left: 18px;
                     float: left;
                     width: 100%;
@@ -61,6 +62,7 @@
                     float: left;
                     width: 100%;
                     text-decoration: none;
+                    height: auto;
                 }
             }
         }

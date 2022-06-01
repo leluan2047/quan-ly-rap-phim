@@ -35,12 +35,12 @@ import PersonalInfo from '../Account/PersonalInfo/PersonalInfo';
                     <div class="main">
                         <div className='content-tabs'> 
                             <div className={toggleState === 1 ? "content active-content " : "content"}> 
-                            <PersonalInfo></PersonalInfo> 
+                            {/* <PersonalInfo></PersonalInfo>  */}
                             </div>
-                            {/* <div className={toggleState === 2 ? "content active-content " : "content "}>
-                            <PersonalInfo></PersonalInfo> 
+                            <div className={toggleState === 2 ? "content active-content " : "content "}>
+                           
                             
-                            </div> */}
+                            </div>
                         </div>
                     </div>
               

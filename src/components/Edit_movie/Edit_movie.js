@@ -15,7 +15,7 @@ function Edit_movie( {movie}) {
   const [country,setCountry] =  useState(movie.nuocSanXuat)
   const [trailer,setTrailer] =  useState(movie.trailer)
   const [poster,setPoster] =  useState(movie.poster)
-  const [status,setStatus] =  useState(1)
+  const [status,setStatus] =  useState(movie.trangThai)
   const Validate = (e) =>
   {
   }
@@ -45,12 +45,10 @@ function Edit_movie( {movie}) {
     console.log(movie.id)
     axios.put(`/movies/${movie.id}`, {tenPhim: name, maTheLoai: category, noiDungPhim: content, daoDien:directors,nuocSanXuat:country,thoiLuong:time,trailer:trailer, poster:poster,trangThai: status})
     .then(result => {
-                      console.log(result) 
-                       
+                      alert(result.data.message) 
                     })
     .catch( error =>{    
-                     console.log(error)  
-                               
+                    alert(error.response.data.message)             
                      })   
   }
   return (

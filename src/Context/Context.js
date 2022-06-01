@@ -2,7 +2,6 @@
 import React from "react"; import {  createContext, useState,useEffect } from "react";
 import List_movie from "../components/List_movie/List_movie";
 import { getAllMovies } from "../Service/Staff_service";
-import Para from "./Para";
 export const MoviesContext = createContext()
 function Context()
 {
@@ -20,7 +19,6 @@ function Context()
     return(
         <MoviesContext.Provider value={movies}>
            <List_movie />
-           <Para></Para>
         </MoviesContext.Provider>
     )
 }
