@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import Popup from "../Popup";
-import Edit_movie from '../Edit_movie/Edit_movie'
 import {axios} from '../../axios';
 const KhachHang = ({ khachHang }) => {
     const [openPopup, setOpenPopup] = useState(false)

@@ -5,12 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Context from './Context/Context';
 import MoviesProvider from './Context/MoviesProvider';
+import Details_movie from './components/Details_movie/Details_movie';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
   <React.StrictMode>
 <MoviesProvider>
-    <App />
+    {/* <App /> */}
+    <Details_movie></Details_movie>
     </MoviesProvider>
   </React.StrictMode>
 );

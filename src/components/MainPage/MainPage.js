@@ -35,7 +35,7 @@ function MainContent() {
           {
             movies.map(item => {
               return (
-                <MediaCard image={item.poster}></MediaCard>
+                <MediaCard image={item.poster} id = {item.id}></MediaCard>
               );
             })
           }

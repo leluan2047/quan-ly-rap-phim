@@ -18,7 +18,6 @@ function App() {
           <Route exact path='/profile' element={<PersonalInfo />} />
           <Route exact path = '/admin' element={<Admin />}/>
           <Route exact path = '/user' element={<User />}/>
-          {/* <Route exact path='/account' element={<Account />} /> */}
         </Routes>
         <Footer />
       </Router>
