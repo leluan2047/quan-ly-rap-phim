@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Context from './Context/Context';
-import MoviesProvider from './Context/MoviesProvider';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Context from "./Context/Context";
+import MoviesProvider from "./Context/MoviesProvider";
+import Details_movie from "./components/Details_movie/Details_movie";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
- 
   <React.StrictMode>
-<MoviesProvider>
-    <App />
+    <MoviesProvider>
+      <App />
     </MoviesProvider>
   </React.StrictMode>
 );

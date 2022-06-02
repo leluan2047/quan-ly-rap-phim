@@ -6,8 +6,8 @@ import MediaCard from '../Card/MediaCard';
 import EventData from '../Events/EventData';
 import Advertisement from '../Advertisement/Advertisement';
 import { getAllMovies } from '../../Service/Staff_service';
-
 function MainContent() {
+ 
   const breakPoints = [
     { width: 500, itemsToShow: 1 },
     { width: 800, itemsToShow: 2 },
@@ -26,6 +26,7 @@ function MainContent() {
         },[] 
     )
   return (
+    <>
     <div className='mainPage-container'>
       <div className='movie-section'>
         <img src={movieSection}></img>
@@ -35,7 +36,7 @@ function MainContent() {
           {
             movies.map(item => {
               return (
-                <MediaCard image={item.poster}></MediaCard>
+                <MediaCard image={item.poster} id = {item.id}></MediaCard>
               );
             })
           }
@@ -46,6 +47,8 @@ function MainContent() {
       <Advertisement></Advertisement>
       <hr width="100%" align="center" size="10px" color="#241D1E" />
     </div>
+   
+    </>
 
   )
 }

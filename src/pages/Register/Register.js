@@ -1,6 +1,6 @@
 import React  from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+import {axios} from '../../axios';
 import './Register.scss'
 
 function Register() {
@@ -112,29 +112,25 @@ function Register() {
   }
   const Validate = () =>
   {
-    checkBirthday()
-    if(!email | !password | !birthday | !phone | !name ) {alert('Bạn vui lòng nhập đúng và đầy đủ thông tin')}
-    else
-      {
-        ////ĐĂNG KÝ
-      }
+    // checkBirthday()
+    // if(!email | !password | !birthday | !phone | !name ) {alert('Bạn vui lòng nhập đúng và đầy đủ thông tin')}
+    // else
+    //   {
+    //     ////ĐĂNG KÝ
+    //   }
   }
   const handleSubmit = (e) =>
   {
     e.preventDefault();
     var gendervalue = document.querySelector("input:checked").value
     console.log({emailvalue,passwordvalue,namevalue,phonevalue,cmndvalue,usernamevalue,birthdayvalue,gendervalue})
-    // axios.post('https://reqres.in/api/register', { email: emailvalue, password: passwordvalue})
-    //   .then(result => {
-    //                     console.log(result) 
-  
-    //                      localStorage.setItem('token',result.data.token)
-    //                   })
-    //   .catch( error =>{    
-    //                    console.log(error)  
-    //                    alert("Email và mật khẩu không hợp lệ")
-    //                    })       
-    // localStorage.setItem('id', 6)
+    axios.post('/users/sign-up', {tenKH: namevalue, gioiTinh: gendervalue, CMND: cmndvalue, SDT:phonevalue,email:emailvalue,username:usernamevalue,password:passwordvalue})
+      .then(result => {
+                        alert(result.data.message)               
+                      })
+      .catch( error =>{    
+                      alert(error.message)                             
+                       })       
   }
   return (
     <>
