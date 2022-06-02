@@ -1,16 +1,33 @@
 import {axios} from "../axios";
 
-const getMovieById = (inputId) =>
-{
-    return axios.get(`...?id=${inputId}`)
-}
-const getProfile = () =>
-{
-    return axios.get('/users/me')
-}
 const getAllMovies = () =>
 {
     return axios.get("/movies")
+}
+const getAllCategory = () =>
+{
+    return axios.get("/category")
+}
+const getAllSchedule =async () =>
+{
+    var schedules = await (await axios.get("/schedule")).data.filter((schedule) =>
+    {
+        return schedule.trangThai === 'Chuẩn bị chiếu'
+    })
+    return schedules
+}
+const getAllPosition = () =>
+{
+    return axios.get("/positions")
+}
+const getAllTicketTpye = () =>
+{
+    return axios.get("/positions")
+}
+const getAllAdvertisement = async () =>
+{
+    var ads = await (axios.get("/advertisement"))
+    return ads
 }
 const getKhachHang = () =>
 {
@@ -18,6 +35,10 @@ const getKhachHang = () =>
 }
 export {
     getAllMovies,
-    getProfile,
+    getAllCategory,
+    getAllSchedule,
+    getAllPosition,
+    getAllTicketTpye,
+    getAllAdvertisement,
     getKhachHang
 }
