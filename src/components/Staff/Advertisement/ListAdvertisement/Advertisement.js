@@ -12,11 +12,11 @@ const Advertisement = ({ ad }) => {
     {
         axios.delete(`/category/${ad.id}`)
     .then(result => {
-                      console.log(result) 
+                      alert(result.data.message) 
                        
                     })
     .catch( error =>{    
-                     console.log(error)  
+                alert(error.message)  
                                
                      })  
     }

@@ -18,7 +18,7 @@ function Admin()  {
     };  
     return (
         <>
-        <div class="menu-user">
+        <div class="menu-admin">
                 <div class="menu">
                         <div class="title">
                             <strong><span class="block-title" >TÀI KHOẢN CGV</span></strong>
