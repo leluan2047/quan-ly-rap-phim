@@ -15,7 +15,6 @@ export default function List_movie() {
                 let res = await getKhachHang();
                 setKhachHangs(res.data)
                 console.log(khachHangs)
-               
             }
             fetchData()
              
@@ -40,7 +39,7 @@ export default function List_movie() {
                 {khachHangs.map(khachHang =>(<tr> <KhachHang khachHang={khachHang} /></tr>))}   
 </table>
             <Popup
-                title="Add movie"
+                title="Add user"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
             >

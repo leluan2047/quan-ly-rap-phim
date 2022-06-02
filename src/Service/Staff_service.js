@@ -33,6 +33,10 @@ const getKhachHang = () =>
 {
     return axios.get("/users/khach-hangs")
 }
+const getProfile = () =>
+{
+    return axios.get("/users/me")
+}
 export {
     getAllMovies,
     getAllCategory,
@@ -40,5 +44,6 @@ export {
     getAllPosition,
     getAllTicketTpye,
     getAllAdvertisement,
-    getKhachHang
+    getKhachHang,
+    getProfile
 }
