@@ -9,7 +9,7 @@ function EditAdvertisement({ad}) {
   const [noidung,setNoidung]= useState(ad.noiDung)
   const [timeStart,setTimeStart]= useState(ad.timeStart)
   const [timeEnd,setTimeEnd]= useState(ad.timeEnd)
-
+  
   const handleSubmit = (e) =>
   {
     e.preventDefault();
