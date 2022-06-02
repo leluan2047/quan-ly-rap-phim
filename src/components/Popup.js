@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
-import {Dialog,DialogTitle,DialogContent, Typography} from '@material-ui/core'
+import { Dialog, DialogTitle, DialogContent, Typography } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 
 export default function Popup(props) {
 
     const { title, children, openPopup, setOpenPopup } = props;
     // const classes = useStyles();
+    const reloadParentComponent = () => {
+        props.handleReloadComponent();
+    }
 
     return (
         <Dialog open={openPopup} maxWidth="md" >
             <DialogTitle>
-                <div  style={{ display: 'flex' }}>
+                <div style={{ display: 'flex' }}>
                     <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
                         {title}
                     </Typography>
                     <button
                         color="secondary"
-                        onClick={()=>{setOpenPopup(false)}}>
-                        <CloseIcon/>
-                        </button>
+                        onClick={() => {
+                            setOpenPopup(false);
+                            reloadParentComponent()
+                        }}>
+                        <CloseIcon />
+                    </button>
                 </div>
             </DialogTitle>
             <DialogContent dividers>
