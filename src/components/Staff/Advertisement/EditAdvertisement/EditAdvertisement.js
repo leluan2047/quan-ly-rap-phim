@@ -16,7 +16,7 @@ function EditAdvertisement({ad}) {
     axios.put(`/advertisement/${ad.id}`, {maPhim:maphim, tenQuangCao:tenqc, noiDung:noidung, timeStart: timeStart, timeEnd: timeEnd})
       .then(result => {
                         console.log(result)   
-                        alert(result)           
+                        alert(result.data.message)           
                       })
       .catch( error =>{    
                        alert(error.message)     
@@ -32,7 +32,7 @@ function EditAdvertisement({ad}) {
             <label for="maphim">Mã phim<span>*</span></label>
                 <input type="text" id="maphim" name="maphim" class="input-add" placeholder="Mã phim" required defaultValue={maphim} onChange={(e) => setMaphim(e.target.value)}></input>
                 <label for="tenqc">Tên quảng cáo<span>*</span></label>
-                <input type="text" id="tenqc" name="tenqc" class="input-add" placeholder="Tên thể loại" required defaultValue={tenqc} onChange={(e) => setTenqc(e.target.value)}></input>
+                <input type="text" id="tenqc" name="tenqc" class="input-add" placeholder="Tên quảng cáo" required defaultValue={tenqc} onChange={(e) => setTenqc(e.target.value)}></input>
                 <label for="noidung">Nội dung<span>*</span></label>
                 <input type="text" id="noidung" name="noidung" class="input-add" placeholder="Nội dung" required defaultValue={noidung} onChange={(e) => setNoidung(e.target.value)}></input>
                 <label for="timestart">Thời gian bắt đầu<span>*</span></label>

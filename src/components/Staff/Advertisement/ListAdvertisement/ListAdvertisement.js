@@ -10,6 +10,20 @@ import CreateAdvertisement from '../CreateAdvertisement/CreateAdvertisement';
 export default function ListAdvertisement() {
     const [ads, setAds] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
+    // const handleReload = () =>
+    // {
+    //     fetchData()
+    // }
+    // async function fetchData()
+    //         {
+    //             let res = await getAllAdvertisement();
+    //             setAds(res.data.data)
+    //             console.log(ads)
+    //         }
+    // useEffect (() =>
+    // {
+    //     fetchData()
+    // },[])
     useEffect( () =>
         {
             async function fetchData()
@@ -39,6 +53,7 @@ export default function ListAdvertisement() {
                 title="Add advertisement"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                //handleReloadComponent = {handleReload}
             >
                 <CreateAdvertisement openPopup = {openPopup}></CreateAdvertisement>
             </Popup>
