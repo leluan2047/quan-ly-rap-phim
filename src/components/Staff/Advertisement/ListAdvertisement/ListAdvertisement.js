@@ -24,14 +24,17 @@ export default function ListAdvertisement() {
     // {
     //     fetchData()
     // },[])
-    useEffect( () =>
-        {
-            async function fetchData()
+    async function fetchData()
             {
                 let res = await getAllAdvertisement();
                 setAds(res.data.data)
                 console.log(ads)
             }
+
+    useEffect( () =>
+        {
+            console.log("list advertisement render");
+            
             fetchData()
         },[] 
     )
@@ -47,12 +50,13 @@ export default function ListAdvertisement() {
                     <th width="8%">Thời gian kết thúc</th> 
                     <th width="8%" colSpan={2}>Hành động</th>
                 </tr>   
-                {ads.map(ad =>(<tr> <Advertisement ad={ad} /></tr>))}   
+                {ads.map(ad =>(<tr> <Advertisement ad={ad}  handleReloadComponent = {fetchData} /></tr>))}   
 </table>
             <Popup
                 title="Add advertisement"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {fetchData}
                 //handleReloadComponent = {handleReload}
             >
                 <CreateAdvertisement openPopup = {openPopup}></CreateAdvertisement>

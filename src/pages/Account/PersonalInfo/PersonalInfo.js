@@ -11,6 +11,7 @@ function PersonalInfo() {
   const [CMND, setCMND] = useState("");
   const [SDT, setSDT] = useState("");
   useEffect(() => {
+      console.log("personInfo render")
     async function fetchData() {
       let res = await getProfile();
       setTenKH(res.data.khachHang.tenKH);

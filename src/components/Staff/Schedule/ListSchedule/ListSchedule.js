@@ -8,14 +8,18 @@ import CreateSchedule from '../CreateSchedule/CreateSchedule';
 export default function ListSchedule() {
     const [schedules, setSchedules] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
-    useEffect( () =>
-        {
-            async function fetchData()
+
+    async function fetchData()
             {
                 let res = await getAllSchedule();
                 setSchedules(res)
                 console.log(res)
             }
+
+    useEffect( () =>
+        {
+            console.log("list schedule render");
+            
             fetchData()
         },[] 
     )
@@ -31,12 +35,13 @@ export default function ListSchedule() {
                     <th  width="15%">Trạng thái</th>
                     <th width="8%" colSpan={2}>Hành động</th>
                 </tr>   
-                {schedules.map(schedule =>(<tr> <Schedule schedule={schedule} /></tr>))}   
+                {schedules.map(schedule =>(<tr> <Schedule schedule={schedule} handleReloadComponent = {fetchData} /></tr>))}   
 </table>
             <Popup
                 title="Add position"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {fetchData}
             >
                 <CreateSchedule openPopup = {openPopup}></CreateSchedule>
             </Popup>

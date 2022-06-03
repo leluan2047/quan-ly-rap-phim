@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Popup from "../../../Popup";
 import EditPosition from "../EditPosition/EditPosition";
 import {axios} from '../../../../axios';
-const Position = ({ position }) => {
+const Position = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
     // useEffect(() => {
     //     // handleCloseUpdate();
@@ -10,8 +10,9 @@ const Position = ({ position }) => {
     // }, [movie]);
     const DeletePosition = () =>
     {
-        axios.delete(`/positions/${position.id}`)
+        axios.delete(`/positions/${props.position.id}`)
     .then(result => {
+                        props.handleReloadComponent()
                       alert(result.data.message) 
                        
                     })
@@ -22,16 +23,17 @@ const Position = ({ position }) => {
     }
     return (
         <>
-            <td>{position.id} </td>
-            <td>{position.tenCV}</td>
+            <td>{props.position.id} </td>
+            <td>{props.position.tenCV}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>
             <td><button className='btn-delete' onClick={() => DeletePosition()}><i className='fas fa-trash'></i></button></td>
             <Popup
                 title="Edit position"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {props.handleReloadComponent}
             >
-               <EditPosition position={position}></EditPosition>
+               <EditPosition position={props.position}></EditPosition>
             </Popup>
         </>
     );

@@ -47,18 +47,18 @@ function User() {
         </div>
         <div class="main">
           <div className="content-tabs">
-            <div
-              className={
-                toggleState === 1 ? "content active-content " : "content"
-              }
-            >
-              <PersonalInfo></PersonalInfo> 
-            </div>
-            <div
-              className={
-                toggleState === 2 ? "content active-content " : "content "
-              }
-            ></div>
+            {toggleState === 1 &&
+              <div
+                className="content"
+              >
+                <PersonalInfo></PersonalInfo>
+              </div>
+            }
+            {toggleState === 2 &&
+              <div
+                className="content"
+              ></div>
+            }
           </div>
         </div>
       </div>

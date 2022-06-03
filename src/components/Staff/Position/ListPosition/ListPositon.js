@@ -9,13 +9,17 @@ import CreatePosition from '../CreatePosition/CreatePosition';
 export default function ListPosition() {
     const [positions, setPositions] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
+
+    async function fetchData()
+    {
+        let res = await getAllPosition();
+        setPositions(res.data)
+    }
+
     useEffect( () =>
         {
-            async function fetchData()
-            {
-                let res = await getAllPosition();
-                setPositions(res.data)
-            }
+            console.log("list position render");
+            
             fetchData()
         },[] 
     )
@@ -29,12 +33,13 @@ export default function ListPosition() {
                     
                     <th width="8%" colSpan={2}>Hành động</th>
                 </tr>   
-                {positions.map(position =>(<tr> <Positon position={position} /></tr>))}   
+                {positions.map(position =>(<tr> <Positon position={position} handleReloadComponent = {fetchData}/></tr>))}   
 </table>
             <Popup
                 title="Add positon"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {fetchData}
             >
                 <CreatePosition openPopup = {openPopup}></CreatePosition>
             </Popup>

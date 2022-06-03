@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Popup from "../../../Popup";
 import EditCategory from "../EditCategory/EditCategory";
 import {axios} from '../../../../axios';
-const Category = ({ category }) => {
+const Category = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
     // useEffect(() => {
     //     // handleCloseUpdate();
@@ -10,8 +10,9 @@ const Category = ({ category }) => {
     // }, [movie]);
     const DeleteCategory = () =>
     {
-        axios.delete(`/category/${category.id}`)
+        axios.delete(`/category/${props.category.id}`)
     .then(result => {
+                    props.handleReloadComponent();
                       console.log(result) 
                        
                     })
@@ -22,17 +23,18 @@ const Category = ({ category }) => {
     }
     return (
         <>
-            <td>{category.id} </td>
-            <td>{category.tenTheLoai}</td>
-            <td>{category.trangThai}</td>
+            <td>{props.category.id} </td>
+            <td>{props.category.tenTheLoai}</td>
+            <td>{props.category.trangThai}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>
             <td><button className='btn-delete' onClick={() => DeleteCategory()}><i className='fas fa-trash'></i></button></td>
             <Popup
                 title="Edit category"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {props.handleReloadComponent}
             >
-               <EditCategory category={category}></EditCategory>
+               <EditCategory category={props.category}></EditCategory>
             </Popup>
         </>
     );

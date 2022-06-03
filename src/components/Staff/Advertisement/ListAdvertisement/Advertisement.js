@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Popup from "../../../Popup";
 import EditAdvertisement from "../EditAdvertisement/EditAdvertisement";
 import {axios} from '../../../../axios';
-const Advertisement = ({ ad }) => {
+const Advertisement = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
     // useEffect(() => {
     //     // handleCloseUpdate();
@@ -10,8 +10,9 @@ const Advertisement = ({ ad }) => {
     // }, [movie]);
     const DeleteAds = () =>
     {
-        axios.delete(`/category/${ad.id}`)
+        axios.delete(`/category/${props.ad.id}`)
     .then(result => {
+                    props.handleReloadComponent();
                       alert(result.data.message) 
                        
                     })
@@ -22,19 +23,20 @@ const Advertisement = ({ ad }) => {
     }
     return (
         <>
-            <td>{ad.maPhim} </td>
-            <td>{ad.tenQuangCao}</td>
-            <td>{ad.noiDung}</td>
-            <td>{ad.timeStart}</td>
-            <td>{ad.timeEnd}</td>
+            <td>{props.ad.maPhim} </td>
+            <td>{props.ad.tenQuangCao}</td>
+            <td>{props.ad.noiDung}</td>
+            <td>{props.ad.timeStart}</td>
+            <td>{props.ad.timeEnd}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>
             <td><button className='btn-delete' onClick={() => DeleteAds()}><i className='fas fa-trash'></i></button></td>
             <Popup
                 title="Edit advertisement"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {props.handleReloadComponent}
             >
-               <EditAdvertisement ad={ad}></EditAdvertisement>
+               <EditAdvertisement ad={props.ad}></EditAdvertisement>
             </Popup>
         </>
     );

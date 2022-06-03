@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Popup from "../Popup";
 import Edit_movie from '../Edit_movie/Edit_movie'
 import {axios} from '../../axios';
-const Movie = ({ movie }) => {
+const Movie = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
     // useEffect(() => {
     //     // handleCloseUpdate();
@@ -10,9 +10,10 @@ const Movie = ({ movie }) => {
     // }, [movie]);
     const DeleteMovie = () =>
     {
-        console.log(movie.id)
-        axios.delete(`/movies/${movie.id}`)
+        console.log(props.movie.id)
+        axios.delete(`/movies/${props.movie.id}`)
     .then(result => {
+                    props.handleReloadComponent();
                       console.log(result) 
                     alert("Delete successfully")
                     })
@@ -22,23 +23,24 @@ const Movie = ({ movie }) => {
     }
     return (
         <>
-            <td>{movie.tenPhim} </td>
-            <td>{movie.noiDungPhim}</td>
-            <td>{movie.maTheLoai} </td>
-            <td>{movie.thoiLuong}</td>
-            <td>{movie.daoDien} </td>
-            <td>{movie.nuocSanXuat}</td>
-            <td>{movie.trailer} </td>
-            <td>{movie.poster}</td>
-            <td>{movie.trangThai}</td>
+            <td>{props.movie.tenPhim} </td>
+            <td>{props.movie.noiDungPhim}</td>
+            <td>{props.movie.maTheLoai} </td>
+            <td>{props.movie.thoiLuong}</td>
+            <td>{props.movie.daoDien} </td>
+            <td>{props.movie.nuocSanXuat}</td>
+            <td>{props.movie.trailer} </td>
+            <td>{props.movie.poster}</td>
+            <td>{props.movie.trangThai}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt' ></i></button></td>
             <td><button className='btn-delete' onClick={() => DeleteMovie()}><i className='fas fa-trash'></i></button></td>
             <Popup
                 title="Edit movie"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {props.handleReloadComponent}
             >
-               <Edit_movie movie={movie}></Edit_movie>
+               <Edit_movie movie={props.movie}></Edit_movie>
             </Popup>
         </>
     );

@@ -10,13 +10,16 @@ import CreateCategory from '../CreateCategory/CreateCategory';
 export default function ListCategory() {
     const [categories, setCategories] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
+
+    async function fetchData()
+    {
+        let res = await getAllCategory();
+        setCategories(res.data)
+    }
+
     useEffect( () =>
         {
-            async function fetchData()
-            {
-                let res = await getAllCategory();
-                setCategories(res.data)
-            }
+            
             fetchData()
         },[] 
     )
@@ -30,12 +33,13 @@ export default function ListCategory() {
                     <th width="8%">Trạng thái</th> 
                     <th width="8%" colSpan={2}>Hành động</th>
                 </tr>   
-                {categories.map(category =>(<tr> <Category category={category} /></tr>))}   
+                {categories.map(category =>(<tr> <Category category={category} handleReloadComponent = {fetchData} /></tr>))}   
 </table>
             <Popup
                 title="Add category"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {fetchData}
             >
                 <CreateCategory openPopup = {openPopup}></CreateCategory>
             </Popup>

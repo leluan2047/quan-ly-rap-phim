@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Popup from "../../../Popup";
 import EditSchedule from "../EditSchedule/EditSchedule";
 import {axios} from '../../../../axios';
-const Schedule = ({ schedule }) => {
+const Schedule = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
     // useEffect(() => {
     //     // handleCloseUpdate();
@@ -10,8 +10,9 @@ const Schedule = ({ schedule }) => {
     // }, [movie]);
     const DeleteSchedule = () =>
     {
-        axios.delete(`/schedule/${schedule.id}`)
+        axios.delete(`/schedule/${props.schedule.id}`)
     .then(result => {
+                 props.handleReloadComponent()
                     alert(result.data.message) 
                     })
     .catch( error =>{    
@@ -20,19 +21,20 @@ const Schedule = ({ schedule }) => {
     }
     return (
         <>
-            <td>{schedule.id} </td>
-            <td>{schedule.maPhong}</td>
-            <td>{schedule.maPhim}</td>
-            <td>{schedule.ngayChieu}</td>
-            <td>{schedule.trangThai}</td>
+            <td>{props.schedule.id} </td>
+            <td>{props.schedule.maPhong}</td>
+            <td>{props.schedule.maPhim}</td>
+            <td>{props.schedule.ngayChieu}</td>
+            <td>{props.schedule.trangThai}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>
             <td><button className='btn-delete' onClick={() => DeleteSchedule()}><i className='fas fa-trash'></i></button></td>
             <Popup
                 title="Edit movie"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {props.handleReloadComponent}
             >
-               <EditSchedule schedule={schedule}></EditSchedule>
+               <EditSchedule schedule={props.schedule}></EditSchedule>
 
             </Popup>
         </>

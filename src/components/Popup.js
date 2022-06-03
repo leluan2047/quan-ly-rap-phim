@@ -6,10 +6,7 @@ export default function Popup(props) {
 
     const { title, children, openPopup, setOpenPopup } = props;
     // const classes = useStyles();
-    const reloadParentComponent = () => {
-        props.handleReloadComponent();
-    }
-
+    
     return (
         <Dialog open={openPopup} maxWidth="md" >
             <DialogTitle>
@@ -19,9 +16,11 @@ export default function Popup(props) {
                     </Typography>
                     <button
                         color="secondary"
+
                         onClick={() => {
                             setOpenPopup(false);
-                            reloadParentComponent()
+                            props.handleReloadComponent();
+                           
                         }}>
                         <CloseIcon />
                     </button>

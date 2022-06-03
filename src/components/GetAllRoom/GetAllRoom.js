@@ -13,10 +13,6 @@ function GetAllRoom() {
 
     const [rooms, setRooms] = useState([]);
 
-    const handleReload = () => {
-        getData();
-    }
-
     const getData = () => {
         axios
             .get('/rooms')
@@ -35,7 +31,7 @@ function GetAllRoom() {
             .then(function (res) {
                 if (res.data.message === "Delete room successfully"){
                     window.alert("Xóa thành công");
-                    handleReload();
+                    getData();
                 }
                 else{
                     window.alert("Xóa thất bại");
@@ -48,6 +44,7 @@ function GetAllRoom() {
 
 
     useEffect(() => {
+        console.log("GetAllRoom render");
         getData();
     }, []);
 
@@ -81,7 +78,7 @@ function GetAllRoom() {
                 title="Add Room"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
-                handleReloadComponent={handleReload}
+                handleReloadComponent={getData}
             >
                 <AddRoom></AddRoom>
             </Popup>
@@ -90,7 +87,7 @@ function GetAllRoom() {
                 title="Edit Room"
                 openPopup={openPopupEdit}
                 setOpenPopup={setOpenPopupEdit}
-                handleReloadComponent={handleReload}
+                handleReloadComponent={getData}
             >
                 <EditRoom id={id}></EditRoom>
             </Popup>

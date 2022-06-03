@@ -9,66 +9,83 @@ import ListPosition from '../../components/Staff/Position/ListPosition/ListPosit
 import ListAdvertisement from '../../components/Staff/Advertisement/ListAdvertisement/ListAdvertisement';
 import ListCategory from '../../components/Staff/Category/ListCategory/ListCategory';
 import ListSchedule from '../../components/Staff/Schedule/ListSchedule/ListSchedule';
+import GetAllRoom from '../../components/GetAllRoom/GetAllRoom';
 // import ListPosition from '../../components/Staff/Position/ListPosition/ListPositon';
 
-function Admin()  {
+function Admin() {
     const [toggleState, setToggleState] = useState(1);
     const toggleTab = (index) => {
-      setToggleState(index);
-    };  
+        setToggleState(index);
+    };
     return (
         <>
-        <div class="menu-admin">
+            <div class="menu-admin">
                 <div class="menu">
-                        <div class="title">
-                            <strong><span class="block-title" >TÀI KHOẢN CGV</span></strong>
-                        </div>
-                        <div class="content-menu">
-                            <ul className='bloc-tabs' >
-                                <li> <Link className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)} to='#'>THÔNG TIN CÁ NHÂN</Link></li>
-                                <li> <Link  className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)} to='#'>QUẢN LÝ PHIM</Link></li>  
-                                <li> <Link  className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)} to='#'>QUẢN LÝ KHÁCH HÀNG</Link></li> 
-                                <li> <Link  className={toggleState === 4 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(4)} to='#'>POSITION</Link></li>
-                                <li> <Link  className={toggleState === 5 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(5)} to='#'>ADVERTISEMENT</Link></li>                    
-                                <li> <Link  className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)} to='#'>CATEGORY</Link></li>
-                                <li> <Link  className={toggleState === 7 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(7)} to='#'>SCHEDULE</Link></li>                    
-                                <li> <Link  className={toggleState === 8 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(8)} to='#'>ROOM</Link></li>
-                            </ul>               
-                        </div>    
-                </div>
-                <div class="main">
-                    <div className='content-tabs'> 
-                        <div className={toggleState === 1 ? "content active-content " : "content"}> 
-                        <PersonalInfo></PersonalInfo> 
-                        </div>
-                        <div className={toggleState === 2 ? "content active-content " : "content "}>
-                        <List_movie></List_movie> 
-                        </div>
-                        <div className={toggleState === 3 ? "content active-content " : "content "}>
-                        <List_KhachHang></List_KhachHang> 
-                        </div>
-                        <div className={toggleState === 4 ? "content active-content " : "content "}>
-                        <ListPosition/>
-                        </div>
-                        <div className={toggleState === 5 ? "content active-content " : "content "}>
-                        <ListAdvertisement/>
-                        </div>
-                        <div className={toggleState === 6 ? "content active-content " : "content "}>
-                        <ListCategory/>
-                        </div>
-                        <div className={toggleState === 7 ? "content active-content " : "content "}>
-                        <ListSchedule/>
-                        </div>
-                        <div className={toggleState === 8 ? "content active-content " : "content "}>
-                        {/* <List_KhachHang></List_KhachHang>  */}
-                        </div>
+                    <div class="title">
+                        <strong><span class="block-title" >TÀI KHOẢN CGV</span></strong>
+                    </div>
+                    <div class="content-menu">
+                        <ul className='bloc-tabs' >
+                            <li> <Link className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)} to='#'>THÔNG TIN CÁ NHÂN</Link></li>
+                            <li> <Link className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)} to='#'>QUẢN LÝ PHIM</Link></li>
+                            <li> <Link className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)} to='#'>QUẢN LÝ KHÁCH HÀNG</Link></li>
+                            <li> <Link className={toggleState === 4 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(4)} to='#'>POSITION</Link></li>
+                            <li> <Link className={toggleState === 5 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(5)} to='#'>ADVERTISEMENT</Link></li>
+                            <li> <Link className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)} to='#'>CATEGORY</Link></li>
+                            <li> <Link className={toggleState === 7 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(7)} to='#'>SCHEDULE</Link></li>
+                            <li> <Link className={toggleState === 8 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(8)} to='#'>ROOM</Link></li>
+                        </ul>
                     </div>
                 </div>
-            
-        </div>
-        
+                <div class="main">
+                    <div className='content-tabs'>
+                        {toggleState === 1 &&
+                            <div className="content">
+                                {/* <PersonalInfo></PersonalInfo> */}
+                            </div>
+                        }
+                        {toggleState === 2 &&
+                            <div className="content">
+                                <List_movie></List_movie>
+                            </div>
+                        }
+                        {toggleState === 3 &&
+                            <div className="content">
+                                <List_KhachHang></List_KhachHang>
+                            </div>
+                        }
+                        {toggleState === 4 &&
+                            <div className="content">
+                                <ListPosition />
+                            </div>
+                        }
+                        {toggleState === 5 &&
+                            <div className="content">
+                                <ListAdvertisement />
+                            </div>
+                        }
+                        {toggleState === 6 &&
+                            <div className="content">
+                                <ListCategory />
+                            </div>
+                        }
+                        {toggleState === 7 &&
+                            <div className="content">
+                                <ListSchedule />
+                            </div>
+                        }
+                        {toggleState === 8 &&
+                            <div className="content">
+                                <GetAllRoom></GetAllRoom>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
         </>
-        );
+    );
 
 
 }
