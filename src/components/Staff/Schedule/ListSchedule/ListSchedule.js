@@ -38,7 +38,7 @@ export default function ListSchedule() {
                 {schedules.map(schedule =>(<tr> <Schedule schedule={schedule} handleReloadComponent = {fetchData} /></tr>))}   
 </table>
             <Popup
-                title="Add position"
+                title="Add schedule"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
                 handleReloadComponent = {fetchData}

@@ -14,12 +14,11 @@ export default function ListCategory() {
     async function fetchData()
     {
         let res = await getAllCategory();
-        setCategories(res.data)
+        setCategories(res)
     }
 
     useEffect( () =>
         {
-            
             fetchData()
         },[] 
     )

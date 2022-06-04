@@ -4,10 +4,6 @@ import Edit_movie from '../Edit_movie/Edit_movie'
 import {axios} from '../../axios';
 const Movie = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
-    // useEffect(() => {
-    //     // handleCloseUpdate();
-    //     // handleCloseDelete();
-    // }, [movie]);
     const DeleteMovie = () =>
     {
         console.log(props.movie.id)
@@ -40,7 +36,7 @@ const Movie = (props) => {
                 setOpenPopup={setOpenPopup}
                 handleReloadComponent = {props.handleReloadComponent}
             >
-               <Edit_movie movie={props.movie}></Edit_movie>
+               <Edit_movie movie={props.movie} allcategory={props.allcategory}></Edit_movie>
             </Popup>
         </>
     );

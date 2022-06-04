@@ -5,7 +5,7 @@ import './EditCategory.scss'
 
 function EditCategory({category}) {
   const [tentheloai,setTentheloai]= useState(category.tenTheLoai)
-  const [trangThai,setTrangThai]= useState(category.trangThai)
+  const [trangThai,setTrangThai]= useState("active")
   console.log(category)
 
   const handleSubmit = (e) =>
@@ -15,7 +15,7 @@ function EditCategory({category}) {
     axios.put(`/category/${category.id}`, {tenTheLoai: tentheloai, trangThai:trangThai})
       .then(result => {
                         console.log(result)   
-                        alert(result)           
+                        alert(result.data.message)           
                       })
       .catch( error =>{    
                        console.log(error)     
@@ -31,7 +31,10 @@ function EditCategory({category}) {
                 <label for="tentheloai">Tên thể loại<span>*</span></label>
                 <input type="text" id="tentheloai" name="tentheloai" class="input-add" placeholder="Tên thể loại" required defaultValue={tentheloai} onChange={(e) => setTentheloai(e.target.value)}></input>
                 <label for="trangthai">Trạng thái<span>*</span></label>
-                <input type="text" id="trangthai" name="trangthai" class="input-add" placeholder="Trạng thái" required  defaultValue={trangThai} onChange={(e) => setTrangThai(e.target.value)}></input>
+                <select name="trangthai" id="trangthai"onChange={(e) => setTrangThai(e.target.value)} value={trangThai}>
+                 <option value="active">active</option>
+                 <option value="deleted">deleted</option>
+                </select>
             <div className='submit-add'>
             <input type='submit' id ='cgv-btnlogin'  value='Add new category'></input>
             </div>

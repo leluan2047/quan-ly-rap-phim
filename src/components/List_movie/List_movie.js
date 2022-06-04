@@ -7,34 +7,35 @@ import { getAllMovies } from '../../Service/Staff_service';
 import './List_movie.scss';
 import Popup from '../Popup'
 import Add_movie from '../Add_movie/Add_movie'
-
+import { getAllCategory } from '../../Service/Staff_service';
 export default function List_movie() {
     const [openPopup, setOpenPopup] = useState(false)
-    // const movies = useContext(MoviesContext)
-    // console.log(movies)
+    const [categories, setCategories] = useState([])
     const [movies, setMovies] = useState(useContext(MoviesContext))
 
     async function fetchData() {
         await getAllMovies()
             .then(function (res) {
-                setMovies(res.data);
+                setMovies(res);
             })
             .catch(function (err) {
                 console.log(err)
             });
 
     }
-
+    
+      async function getCategory()
+      {
+          let res = await getAllCategory();
+          setCategories(res.data)
+      }
+ 
     useEffect(() => {
         console.log("person render");
         fetchData()
-
+        getCategory()
     }, []
     )
-    // useEffect ( () =>
-    // {},[movies]
-
-    // )
     return (
         <>
             <button className='btn-add' onClick={() => setOpenPopup(true)}><AddIcon />Add new</button>
@@ -51,7 +52,7 @@ export default function List_movie() {
                     <th width="8%">Trạng thái</th>
                     <th width="8%" colSpan={2}>Hành động</th>
                 </tr>
-                {movies.map(movie => (<tr> <Movie movie={movie} handleReloadComponent = {fetchData} /></tr>))}
+                {movies.map(movie => (<tr> <Movie movie={movie} handleReloadComponent = {fetchData} allcategory={categories} /></tr>))}
             </table>
             <Popup
                 title="Add movie"
@@ -59,7 +60,7 @@ export default function List_movie() {
                 setOpenPopup={setOpenPopup}
                 handleReloadComponent = {fetchData}
             >
-                <Add_movie openPopup={openPopup}></Add_movie>
+                <Add_movie openPopup={openPopup} category={categories}></Add_movie>
             </Popup>
 
         </>

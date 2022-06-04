@@ -14,7 +14,6 @@ const Category = (props) => {
     .then(result => {
                     props.handleReloadComponent();
                       console.log(result) 
-                       
                     })
     .catch( error =>{    
                      console.log(error)  

@@ -1,12 +1,22 @@
 import {axios} from "../axios";
 
-const getAllMovies = () =>
+const getAllMovies = async () =>
 {
-    return axios.get("/movies")
+    var movies = await (await axios.get("/movies")).data.filter((movie) =>
+    {
+        return movie.trangThai === 'đang chiếu'
+    })
+    console.log(movies)
+    return movies
 }
-const getAllCategory = () =>
+const getAllCategory = async() =>
 {
-    return axios.get("/category")
+    var categories = await (await axios.get("/category")).data.filter((category) =>
+    {
+        return category.trangThai === 'active'
+    })
+    return categories
+    
 }
 const getAllSchedule =async () =>
 {
@@ -22,7 +32,7 @@ const getAllPosition = () =>
 }
 const getAllTicketTpye = () =>
 {
-    return axios.get("/positions")
+    return axios.get("/...")
 }
 const getAllAdvertisement = async () =>
 {

@@ -10,13 +10,14 @@ import { getAllMovies } from "../Service/Staff_service";
             async function fetchData()
             {
                 let res = await getAllMovies();
-                setMovies(res.data)
+                setMovies(res)
+                console.log(res)
             }
             fetchData()
         },[] 
     )
     return(
-        <MoviesContext.Provider value={movies}>
+        <MoviesContext.Provider value={movies} >
            {children}
         </MoviesContext.Provider>
     )

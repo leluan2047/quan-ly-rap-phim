@@ -17,7 +17,12 @@ function GetAllRoom() {
         axios
             .get('/rooms')
             .then(function (res) {
-                setRooms(res.data);
+                
+                var datarooms=  res.data.filter((dataroom) =>
+                {
+                    return dataroom.trangThai ==='active'
+                })
+                setRooms(datarooms);
             })
             .catch(function (err) {
                 console.log(err)

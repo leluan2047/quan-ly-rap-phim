@@ -7,7 +7,7 @@ function EditSchedule({schedule}) {
   const [maphong,setMaphong]= useState(schedule.maPhong)
   const [maphim,setMaphim]= useState(schedule.maPhim)
   const [ngaychieu,setNgaychieu]= useState(schedule.ngayChieu)
-  const [trangthai,setTrangthai]= useState(schedule.trangThai)
+  const [trangthai,setTrangthai]= useState("Chuẩn bị chiếu")
   console.log(schedule)
 
   const handleSubmit = (e) =>
@@ -38,9 +38,12 @@ function EditSchedule({schedule}) {
                 <label for="ngaychieu">Ngày chiếu<span>*</span></label>
                 <input type="datetime-local" id="ngaychieu" name="ngaychieu" class="input-add" placeholder="Ngày chiếu" required defaultValue={ngaychieu} onChange={(e) => setNgaychieu(e.target.value)}></input>
                 <label for="trangthai">Trạng thái<span>*</span></label>
-                <input type="text" id="trangthai" name="trangthai" class="input-add" placeholder="Trạng thái" required defaultValue={trangthai} onChange={(e) => setTrangthai(e.target.value)}></input>
+                <select name="trangthai" id="trangthai"onChange={(e) => setTrangthai(e.target.value)} value={trangthai}>
+                 <option value="Chuẩn bị chiếu">Chuẩn bị chiếu</option>
+                 <option value="Đã chiếu">Đã chiếu</option>
+                </select>
             <div className='submit-add'>
-            <input type='submit' id ='cgv-btnlogin'  value='Add new schedule'></input>
+            <input type='submit' id ='cgv-btnlogin'  value='Edit schedule'></input>
             </div>
             </form>
     </div>

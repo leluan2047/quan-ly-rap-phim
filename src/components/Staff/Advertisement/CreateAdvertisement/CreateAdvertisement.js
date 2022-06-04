@@ -12,13 +12,14 @@ function CreateAdvertisement() {
   const handleSubmit = (e) =>
   {
     e.preventDefault();
+    console.log(maphim,tenqc,noidung,timeStart,timeEnd)
     axios.post('/advertisement', {maPhim:maphim, tenQuangCao:tenqc, noiDung:noidung, timeStart: timeStart, timeEnd: timeEnd})
       .then(result => {
                         console.log(result)   
                         alert(result.data.message)           
                       })
       .catch( error =>{    
-                       console.log(error)     
+        alert(error)     
                        })       
   }
   return (

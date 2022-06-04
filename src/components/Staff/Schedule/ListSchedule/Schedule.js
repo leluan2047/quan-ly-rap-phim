@@ -29,7 +29,7 @@ const Schedule = (props) => {
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>
             <td><button className='btn-delete' onClick={() => DeleteSchedule()}><i className='fas fa-trash'></i></button></td>
             <Popup
-                title="Edit movie"
+                title="Edit schedule"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
                 handleReloadComponent = {props.handleReloadComponent}

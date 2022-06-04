@@ -41,7 +41,7 @@ function Admin() {
                     <div className='content-tabs'>
                         {toggleState === 1 &&
                             <div className="content">
-                                {/* <PersonalInfo></PersonalInfo> */}
+                                <PersonalInfo></PersonalInfo>
                             </div>
                         }
                         {toggleState === 2 &&

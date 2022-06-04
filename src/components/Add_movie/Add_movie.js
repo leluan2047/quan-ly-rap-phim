@@ -1,9 +1,9 @@
 import React  from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {axios} from '../../axios';
 import './Add_movie.scss'
 
-function Add_movie() {
+function Add_movie(props) {
   
   const [time,setTime]= useState("")
   const [content,setContent] = useState("")
@@ -13,8 +13,8 @@ function Add_movie() {
   const [country,setCountry] =  useState("")
   const [trailer,setTrailer] =  useState("")
   const [poster,setPoster] =  useState("")
-  const [status,setStatus] =  useState(1)
-  
+  const [status,setStatus] =  useState("đang chiếu")
+  const [categories, setCategories] = useState(props.category)
   const ResizeTextarea =(e) =>
   {
    const textarea = document.querySelector("textarea");
@@ -39,7 +39,7 @@ function Add_movie() {
     e.preventDefault();
     if(category ==="")
     {
-      alert("Vui lòng họn thể loại")
+      alert("Vui lòng chọn thể loại")
     }
     console.log({name,category,content,directors,country,time,trailer,poster,status})
     axios.post('/movies', {tenPhim: name, maTheLoai: category, noiDungPhim: content, daoDien:directors,nuocSanXuat:country,thoiLuong:time,trailer:trailer, poster:poster,trangThai: status})
@@ -48,10 +48,11 @@ function Add_movie() {
                         alert(result.data.message)
                       })
       .catch( error =>{    
-                       console.log(error.message)  
+                       alert(error.message)  
                                  
                        })       
   }
+  
   return (
     <>
     <div className="add-movie" >
@@ -63,10 +64,8 @@ function Add_movie() {
                 <input type="text" id="name" name="name" class="input-add" placeholder="Tên phim" required  onChange={(e) => setName(e.target.value)}></input>
                 <label for="category">Thể loại<span>*</span></label>
                 <select name="cars" id="cars" onChange={(e) => setCategory(e.target.value)}>
-                  <option value="" >---Chọn thể loại phim---</option>
-                  <option value="1">Kiếm hiệp</option>
-                  <option value="2">Tình cảm</option>
-                  <option value="3">Hài</option>
+                  <option value="" >--Chọn thể loại phim--</option>
+                  {categories.map(category =>(<option value={category.id}>{category.tenTheLoai}</option>))}
                 </select>
                 <label for="content">Nội dung <span>*</span></label>
                 <textarea contenteditable="true" id="content" name="content" class="input-add" placeholder="Nội dung phim" onBlur={checkContent} onChange={(e)=> setContent(e.target.value)} onFocus={ResizeTextarea} required ></textarea>
@@ -84,8 +83,8 @@ function Add_movie() {
                 <input type="text" id="poster" name="poster" class="input-add" placeholder="Poster"  required onChange={(e) => setPoster(e.target.value)} ></input>             
                 <label for="status">Trạng thái</label>
                 <select name="cars" id="cars" onChange={(e) => setStatus(e.target.value)}>
+                <option value="đang chiếu">Đang chiếu</option>
                   <option value="Đã chiếu">Đã chiếu</option>
-                  <option value="đang chiếu">Đang chiếu</option>
                 </select>
             <div className='submit-add'>
             <input type='submit' id ='cgv-btnlogin'  value='Add new movie'></input>

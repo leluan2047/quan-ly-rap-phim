@@ -5,17 +5,19 @@ import { useState } from 'react';
 import {axios} from '../../axios';
 import './Edit_movie.scss'
 
-function Edit_movie( {movie}) {
-  
-  const [time,setTime]= useState(movie.thoiLuong)
-  const [content,setContent] = useState(movie.noiDungPhim)
-  const [name,setName] =  useState(movie.tenPhim)
-  const [category,setCategory] =  useState(movie.theLoai)
-  const [directors,setDirectors] =  useState(movie.daoDien)
-  const [country,setCountry] =  useState(movie.nuocSanXuat)
-  const [trailer,setTrailer] =  useState(movie.trailer)
-  const [poster,setPoster] =  useState(movie.poster)
-  const [status,setStatus] =  useState(movie.trangThai)
+function Edit_movie( props) {
+  // const {movie,allcategory} = props
+  const [time,setTime]= useState(props.movie.thoiLuong)
+  const [content,setContent] = useState(props.movie.noiDungPhim)
+  const [name,setName] =  useState(props.movie.tenPhim)
+  const [category,setCategory] =  useState(props.movie.theLoai)
+  const [directors,setDirectors] =  useState(props.movie.daoDien)
+  const [country,setCountry] =  useState(props.movie.nuocSanXuat)
+  const [trailer,setTrailer] =  useState(props.movie.trailer)
+  const [poster,setPoster] =  useState(props.movie.poster)
+  const [status,setStatus] =  useState(props.movie.trangThai)
+  const [categories,setCategories] = useState(props.allcategory)
+  console.log(categories)
   const Validate = (e) =>
   {
   }
@@ -42,8 +44,7 @@ function Edit_movie( {movie}) {
   {
     e.preventDefault();
     console.log({name,category,content,directors,country,time,trailer,poster,status})
-    console.log(movie.id)
-    axios.put(`/movies/${movie.id}`, {tenPhim: name, maTheLoai: category, noiDungPhim: content, daoDien:directors,nuocSanXuat:country,thoiLuong:time,trailer:trailer, poster:poster,trangThai: status})
+    axios.put(`/movies/${props.movie.id}`, {tenPhim: name, maTheLoai: category, noiDungPhim: content, daoDien:directors,nuocSanXuat:country,thoiLuong:time,trailer:trailer, poster:poster,trangThai: status})
     .then(result => {
                       alert(result.data.message) 
                     })
@@ -61,10 +62,8 @@ function Edit_movie( {movie}) {
                 <label for="name">Tên phim<span>*</span></label>
                 <input type="text" id="name" name="name" class="input-add" placeholder="Tên phim" required  onChange={(e) => setName(e.target.value)} defaultValue=  {name}></input>
                 <label for="category">Thể loại<span>*</span></label>
-                <select name="cars" id="cars" onChange={(e) => setCategory(e.target.value)} defaultValue={category}>
-                  <option value="1">Kiếm hiệp</option>
-                  <option value="2">Tình cảm</option>
-                  <option value="3">Hài</option>
+                <select name="cars" id="cars" onChange={(e) => setCategory(e.target.value)} value={category}>
+                  {categories.map(category =>(<option value={category.id}>{category.id}</option>))}
                 </select>
                 <label for="content">Nội dung <span>*</span></label>
                 <textarea contenteditable="true" id="content" name="content" class="input-add" placeholder="Nội dung phim" onBlur={checkContent} onChange={(e)=> setContent(e.target.value)} onFocus={ResizeTextarea}  defaultValue={content} required ></textarea>

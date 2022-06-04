@@ -20,7 +20,8 @@ function MainContent() {
             async function fetchData()
             {
                 let res = await getAllMovies();
-                setMovies(res.data)
+                setMovies(res)
+                console.log(res)
             }
             fetchData()
         },[] 

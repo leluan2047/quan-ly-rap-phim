@@ -10,7 +10,7 @@ const Advertisement = (props) => {
     // }, [movie]);
     const DeleteAds = () =>
     {
-        axios.delete(`/category/${props.ad.id}`)
+        axios.delete(`/advertisement/${props.ad.id}`)
     .then(result => {
                     props.handleReloadComponent();
                       alert(result.data.message) 
