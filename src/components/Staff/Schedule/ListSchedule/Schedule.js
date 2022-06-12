@@ -4,10 +4,6 @@ import EditSchedule from "../EditSchedule/EditSchedule";
 import {axios} from '../../../../axios';
 const Schedule = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
-    // useEffect(() => {
-    //     // handleCloseUpdate();
-    //     // handleCloseDelete();
-    // }, [movie]);
     const DeleteSchedule = () =>
     {
         axios.delete(`/schedule/${props.schedule.id}`)

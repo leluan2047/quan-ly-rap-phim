@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import AddIcon from '@material-ui/icons/Add';
-import Positon from './Position';
-import './ListPosition.scss';
+import TicketType from './TicketType';
+import './ListTicketType.scss';
 import Popup from '../../../Popup'
-import { getAllPosition } from '../../../../Service/Staff_service';
-import CreatePosition from '../CreatePosition/CreatePosition';
+import { getAllTicketTpye } from '../../../../Service/Staff_service';
+import CreateTicketType from '../CreateTicketType/CreateTicketType';
 // import Add_movie from '../Add_movie/Add_movie'
-export default function ListPosition() {
-    const [positions, setPositions] = useState([])
+export default function ListTicketType() {
+    const [ticketTypes, setTicketTypes] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
+    async function fetchData()
+            {
+                let res = await getAllTicketTpye();
+                setTicketTypes(res.data)
+            }
     useEffect( () =>
         {
-            async function fetchData()
-            {
-                let res = await getAllPosition();
-                setPositions(res.data)
-            }
             fetchData()
         },[] 
     )
@@ -25,18 +25,20 @@ export default function ListPosition() {
             <table id="movies">
                 <tr>
                     <th width="15%" >ID </th>
-                    <th  width="15%">Tên công việc</th>
-                    
+                    <th  width="15%">Tên loại vé</th>
+                    <th  width="15%">Giá vé</th>
+                    <th  width="15%">Trạng thái</th>
                     <th width="8%" colSpan={2}>Hành động</th>
                 </tr>   
-                {positions.map(position =>(<tr> <Positon position={position} /></tr>))}   
+                {ticketTypes.map(ticketType =>(<tr> <TicketType ticketType={ticketType} handleReloadComponent = {fetchData} /></tr>))}   
 </table>
             <Popup
-                title="Add positon"
+                title="Add ticket type"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
+                handleReloadComponent = {fetchData}
             >
-                <CreatePosition openPopup = {openPopup}></CreatePosition>
+                <CreateTicketType openPopup = {openPopup}></CreateTicketType>
             </Popup>
             
         </>

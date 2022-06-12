@@ -1,18 +1,20 @@
 import React  from 'react';
 import { useState } from 'react';
 import {axios} from '../../../../axios';
-import './CreatePosition.scss'
+import './CreateTicketType.scss'
 
-function CreatePositon() {
-  const [tenCV,setTenCV]= useState("")
+function CreateTicketType() {
+
+  const [tenloaive,setTenloaive] = useState("")
+
+  const [giave,setGiave] =  useState("")
   const handleSubmit = (e) =>
   {
     e.preventDefault();
-    console.log(tenCV);
-    axios.post('/positions', {tenCV: tenCV})
+    axios.post('/ticketType', {tenLoaiVe: tenloaive, giaVe: giave})
       .then(result => {
                         console.log(result)   
-                        alert(result.data.message)           
+                        alert(result.statusText)           
                       })
       .catch( error =>{    
                        console.log(error)     
@@ -20,16 +22,22 @@ function CreatePositon() {
   }
   return (
     <>
-    <div className="createpositon" >
-    {/* <div className='title-createcategory'>
+    <div className="createtickettype" >
+    {/* <div className='title-createtickettype'>
         <h1 >ADD&ensp;TICKET&ensp;TYPE</h1>
       </div> */}
             <form className='formcreatepositon' name = 'cgv-signup-form' id='cgv-signup-form' onSubmit={handleSubmit} >
-                <label for="tenCV">Tên công việc<span>*</span></label>
-                <input type="text" id="tenCV" name="tenCV" class="input-add" placeholder="Tên CV" required  onChange={(e) => setTenCV(e.target.value)}></input>
-                
+            <label for="tenloaive">Tên loại vé<span>*</span></label>
+                <select name="tenloaive" id="tenloaive" onChange={(e) => setTenloaive(e.target.value)}required>
+                <option value="">--Chọn loại vé--</option>
+                  <option value="sv">Vé VIP</option>
+                  <option value="adult">Vé người lớn</option>
+                  <option value="child">Vé trẻ em</option>
+                </select>
+                <label for="giave">Giá vé(VNĐ) <span>*</span></label>
+                <input type="text" id="giave" name="giave" class="input-add" placeholder="Giá vé" required  onChange={(e) => setGiave(e.target.value)}></input>   
             <div className='submit-add'>
-            <input type='submit' id ='cgv-btnlogin'  value='Add new positon'></input>
+            <input type='submit' id ='cgv-btnlogin'  value='Add new ticket type'></input>
             </div>
             </form>
     </div>
@@ -37,4 +45,4 @@ function CreatePositon() {
     </>
   );
 }
-export default CreatePositon;
+export default CreateTicketType;
