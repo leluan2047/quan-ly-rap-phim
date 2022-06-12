@@ -34,6 +34,10 @@ const getAllTicketTpye = () =>
 {
     return axios.get("/ticketType")
 }
+const getAllTicket = () =>
+{
+    return axios.get("/ticket")
+}
 const getAllAdvertisement = async () =>
 {
     var ads = await (axios.get("/advertisement"))
@@ -55,5 +59,6 @@ export {
     getAllTicketTpye,
     getAllAdvertisement,
     getKhachHang,
-    getProfile
+    getProfile,
+    getAllTicket
 }
