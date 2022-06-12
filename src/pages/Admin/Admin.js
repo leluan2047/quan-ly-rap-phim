@@ -10,7 +10,7 @@ import ListAdvertisement from '../../components/Staff/Advertisement/ListAdvertis
 import ListCategory from '../../components/Staff/Category/ListCategory/ListCategory';
 import ListSchedule from '../../components/Staff/Schedule/ListSchedule/ListSchedule';
 import GetAllRoom from '../../components/GetAllRoom/GetAllRoom';
-// import ListPosition from '../../components/Staff/Position/ListPosition/ListPositon';
+import ListTicketType from '../../components/Staff/TicketType/ListTicketType/ListTicketType'
 
 function Admin() {
     const [toggleState, setToggleState] = useState(1);
@@ -34,6 +34,8 @@ function Admin() {
                             <li> <Link className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)} to='#'>CATEGORY</Link></li>
                             <li> <Link className={toggleState === 7 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(7)} to='#'>SCHEDULE</Link></li>
                             <li> <Link className={toggleState === 8 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(8)} to='#'>ROOM</Link></li>
+                            <li> <Link className={toggleState === 9 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(9)} to='#'>TICKET TYPE</Link></li>
+
                         </ul>
                     </div>
                 </div>
@@ -77,6 +79,11 @@ function Admin() {
                         {toggleState === 8 &&
                             <div className="content">
                                 <GetAllRoom></GetAllRoom>
+                            </div>
+                        }
+                        {toggleState === 9 &&
+                            <div className="content">
+                                <ListTicketType></ListTicketType>
                             </div>
                         }
                     </div>

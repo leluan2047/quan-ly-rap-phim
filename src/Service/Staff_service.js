@@ -32,7 +32,7 @@ const getAllPosition = () =>
 }
 const getAllTicketTpye = () =>
 {
-    return axios.get("/...")
+    return axios.get("/ticketType")
 }
 const getAllAdvertisement = async () =>
 {

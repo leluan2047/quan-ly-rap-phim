@@ -18,8 +18,6 @@ export default function ListSchedule() {
 
     useEffect( () =>
         {
-            console.log("list schedule render");
-            
             fetchData()
         },[] 
     )
