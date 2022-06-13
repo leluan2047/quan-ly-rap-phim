@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { axios } from "../../../axios";
 import "./EditShowTime.scss";
-
+import moment from 'moment'
 function EditShowTime(props) {
     const [danhSachLichChieu, setDanhSachLichChieu] = useState([]);
 
-    const [maLichChieu, setMaLichChieu] = useState();
+    const [maLichChieu, setMaLichChieu] = useState("");
     const [tenSuatChieu, setTenSuatChieu] = useState("")
     const [trangThai, setTrangThai] = useState("")
+
     const [thoiGianBatDau, setThoiGianBatDau] = useState("")
     const [thoiGianKetThuc, setThoiGianKetThuc] = useState("")
 
@@ -30,8 +31,9 @@ function EditShowTime(props) {
                 setMaLichChieu(res.data.maLichChieu);
                 setTenSuatChieu(res.data.tenSuatChieu);
                 setTrangThai(res.data.trangThai);
-                setThoiGianBatDau(res.data.timeStart);
-                setThoiGianKetThuc(res.data.timeEnd);
+                setThoiGianBatDau(moment.utc(res.data.timeStart).format('YYYY-MM-DDTHH:mm:ss'));
+                setThoiGianKetThuc(moment.utc(res.data.timeEnd).format('YYYY-MM-DDTHH:mm:ss'));
+
             })
             .catch(function (err) {
                 console.log(err)
@@ -50,8 +52,8 @@ function EditShowTime(props) {
                 .put(`/showtime/${props.id}`, {
                     "maLichChieu": maLichChieu,
                     "tenSuatChieu": tenSuatChieu,
-                    "timeStart": thoiGianBatDau,
-                    "timeEnd": thoiGianKetThuc
+                    "timeStart": thoiGianBatDau + ".000z",
+                    "timeEnd": thoiGianKetThuc + ".000z"
                 })
                 .then(res => {
                     if (res.data.message === "Update showtime successfully")
@@ -65,9 +67,8 @@ function EditShowTime(props) {
                 })
         }
 
-        // fetchData();
-        console.log(thoiGianBatDau);
-
+        fetchData();
+        // console.log(thoiGianBatDau)
     }
 
     return (
@@ -94,10 +95,18 @@ function EditShowTime(props) {
                 <input name="trangThai" className="input-add" required value={trangThai} onChange={e => setTrangThai(e.target.value)}></input>
 
                 <label for="timeStart">Thời gian bắt đầu<span>*</span></label>
-                <input type="datetime-local" name="thoiGianBatDau" className="input-add" required value={thoiGianBatDau} onChange={e => setThoiGianBatDau(e.target.value)}></input>
+                <input type="datetime-local" name="thoiGianBatDau" className="input-add" required
+                    value={thoiGianBatDau}
+                    onChange={e => setThoiGianBatDau(
+                        e.target.value
+                    )}></input>
 
                 <label for="endTime">Thời gian kết thúc<span>*</span></label>
-                <input type="datetime-local" name="thoiGianKetThuc" className="input-add" required value={thoiGianKetThuc} onChange={e => setThoiGianKetThuc(e.target.value)}></input>
+                <input type="datetime-local" name="thoiGianKetThuc" className="input-add" required
+                    value={thoiGianKetThuc}
+                    onChange={e => setThoiGianKetThuc(
+                        e.target.value
+                    )}></input>
 
                 <div className='submit-add'>
                     <input type='submit' value='Sửa suất chiếu'></input>

@@ -5,6 +5,7 @@ import { axios } from "../../../axios";
 import './GetAllShowTime.scss';
 import AddShowTime from './AddShowTime';
 import EditShowTime from './EditShowTime';
+import moment from "moment"
 
 function GetAllShowTime() {
     const [openPopup, setOpenPopup] = useState(false);
@@ -71,8 +72,8 @@ function GetAllShowTime() {
                             <td>{item.maLichChieu}</td>
                             <td>{item.tenSuatChieu}</td>
                             <td>{item.trangThai}</td>
-                            <td>{item.timeStart}</td>
-                            <td>{item.timeEnd}</td>
+                            <td>{moment.utc(item.timeStart).format('YYYY-MM-DD HH:mm:ss')}</td>
+                            <td>{moment.utc(item.timeEnd).format('YYYY-MM-DD HH:mm:ss')}</td>
                             <td><button className='btn-edit' onClick={() => editShowTime(item.id)}><i className='fas fa-pencil-alt' ></i></button></td>
                             <td><button className='btn-delete' onClick={(e) => deleteData(item.id)}><i className='fas fa-trash'></i></button></td>
                         </tr>

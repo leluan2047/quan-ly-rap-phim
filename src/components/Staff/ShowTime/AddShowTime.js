@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { axios } from "../../../axios";
 import "./AddShowTime.scss";
 
+
 function AddShowTime() {
     const [danhSachLichChieu, setDanhSachLichChieu] = useState([]);
 
@@ -29,8 +30,8 @@ function AddShowTime() {
             .post('/showtime', {
                 "maLichChieu": lichChieu,
                 "tenSuatChieu": tenSuatChieu,
-                "timeStart": thoiGianBatDau,
-                "timeEnd": thoiGianKetThuc
+                "timeStart": thoiGianBatDau + ".000z",
+                "timeEnd": thoiGianKetThuc + ".000z"
             })
             .then(res => {
                 if(res.data.message === "Create showtime successfully")
@@ -42,6 +43,7 @@ function AddShowTime() {
             .catch(err => {
                 console.log(err)
             })
+        
     }
 
     useEffect(() => {
