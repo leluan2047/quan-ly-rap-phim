@@ -65,7 +65,7 @@ function GetAllRoom() {
                     <th width="7%" >Tên phòng</th>
                     <th width="7%">Số lượng ghế</th>
                     <th width="7%">Trạng thái</th>
-                    <th width="15%" colSpan={2}>Hành động</th>
+                    <th width="10%" colSpan={2}>Hành động</th>
                 </tr>
                 {rooms.map(item => {
                     return (

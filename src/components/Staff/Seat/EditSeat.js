@@ -5,7 +5,6 @@ import './EditSeat.scss';
 function EditSeat(props) {
 
     const [danhSachPhong, setDanhSachPhong] = useState([]);
-
     const [maPhong, setMaPhong] = useState();
     const [trangThai, setTrangThai] = useState("")
     const [viTriDay, setViTriDay] = useState("")

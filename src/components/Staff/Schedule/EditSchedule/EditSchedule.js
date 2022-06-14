@@ -2,11 +2,11 @@ import React  from 'react';
 import { useState } from 'react';
 import {axios} from '../../../../axios';
 import './EditSchedule.scss'
-
+import moment from 'moment'
 function EditSchedule({schedule}) {
-  const [maphong,setMaphong]= useState(schedule.maPhong)
-  const [maphim,setMaphim]= useState(schedule.maPhim)
-  const [ngaychieu,setNgaychieu]= useState(schedule.ngayChieu)
+  const [maphong,setMaphong]= useState(schedule.phongChieu.id)
+  const [maphim,setMaphim]= useState(schedule.phim.id)
+  const [ngaychieu,setNgaychieu]= useState(moment.utc(schedule.ngayChieu).format('YYYY-MM-DDTHH:mm:ss'))
   const [trangthai,setTrangthai]= useState("Chuẩn bị chiếu")
   console.log(schedule)
 

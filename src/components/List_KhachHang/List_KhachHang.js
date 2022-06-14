@@ -29,12 +29,12 @@ export default function List_movie() {
             <button className='btn-add' onClick={() => setOpenPopup(true)}><AddIcon />Add new</button>
             <table id="movies">
                 <tr>
-                    <th width="15%" >ID </th>
-                    <th width="15%">Tên</th>
-                    <th width="7%">Giới tính</th>
-                    <th width="7%">CMND</th>
-                    <th width="7%">SĐT</th>
-                    <th width="8%" colSpan={2}>Hành động</th>
+                    <th width="10%" >ID </th>
+                    <th width="20%">Tên</th>
+                    <th width="15%">Giới tính</th>
+                    <th width="15%">CMND</th>
+                    <th width="15%">SĐT</th>
+                    <th width="15%" colSpan={2}>Hành động</th>
                 </tr>
                 {khachHangs.map(khachHang => (<tr> <KhachHang khachHang={khachHang} handleReloadComponent={fetchData} /></tr>))}
             </table>

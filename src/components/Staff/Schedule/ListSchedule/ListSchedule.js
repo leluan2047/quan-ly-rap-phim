@@ -26,12 +26,12 @@ export default function ListSchedule() {
             <button className='btn-add' onClick={() =>setOpenPopup(true)}><AddIcon/>Add new</button>
             <table id="positions">
                 <tr>
-                    <th width="15%" >ID </th>
+                    <th width="10%" >ID </th>
                     <th  width="15%">Mã phòng</th>
                     <th  width="15%">Mã phim</th>
                     <th  width="15%">Ngày chiếu</th>
-                    <th  width="15%">Trạng thái</th>
-                    <th width="8%" colSpan={2}>Hành động</th>
+                    <th  width="10%">Trạng thái</th>
+                    <th width="15%" colSpan={2}>Hành động</th>
                 </tr>   
                 {schedules.map(schedule =>(<tr> <Schedule schedule={schedule} handleReloadComponent = {fetchData} /></tr>))}   
 </table>

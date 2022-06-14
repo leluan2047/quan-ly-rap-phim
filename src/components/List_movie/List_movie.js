@@ -27,7 +27,7 @@ export default function List_movie() {
       async function getCategory()
       {
           let res = await getAllCategory();
-          setCategories(res.data)
+          setCategories(res)
       }
  
     useEffect(() => {

@@ -24,10 +24,10 @@ export default function ListTicket() {
             <table id="movies">
                 <tr>
                     <th width="15%" >ID </th>
-                    <th  width="15%">Mã suất chiếu</th>
-                    <th  width="15%">Mã loại vé</th>
-                    <th  width="15%">Mã phòng</th>
-                    <th  width="15%">Mã phim</th>
+                    <th  width="15%">Tên suất chiếu</th>
+                    <th  width="15%">Tên loại vé</th>
+                    <th  width="15%">Tên phòng</th>
+                    <th  width="15%">Tên phim</th>
                     <th  width="15%">Ngày mua</th>
                     <th  width="15%">Trạng thái</th>
                     <th width="8%" colSpan={2}>Hành động</th>

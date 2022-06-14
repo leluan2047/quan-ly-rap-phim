@@ -18,10 +18,10 @@ const Ticket = (props ) => {
     return (
         <>
             <td>{props.ticket.id} </td>
-            <td>{props.ticket.maSuatChieu} </td>
-            <td>{props.ticket.maLoaiVe}</td>
-            <td>{props.ticket.maPhong} </td>
-            <td>{props.ticket.maPhim}</td>
+            <td>{props.ticket.suatChieu.tenSuatChieu} </td>
+            <td>{props.ticket.loaiVe.tenLoaiVe}</td>
+            <td>{props.ticket.phongChieu.tenPhong} </td>
+            <td>{props.ticket.phim.tenPhim}</td>
             <td>{props.ticket.ngayMua}</td>
             <td>{props.ticket.trangThai}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>

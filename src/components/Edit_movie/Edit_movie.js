@@ -1,16 +1,13 @@
 import React  from 'react';
 import { useState } from 'react';
-//import logo from './logo.svg';
-//import './App.css';
 import {axios} from '../../axios';
 import './Edit_movie.scss'
 
 function Edit_movie( props) {
-  // const {movie,allcategory} = props
   const [time,setTime]= useState(props.movie.thoiLuong)
   const [content,setContent] = useState(props.movie.noiDungPhim)
   const [name,setName] =  useState(props.movie.tenPhim)
-  const [category,setCategory] =  useState(props.movie.theLoai)
+  const [category,setCategory] =  useState(props.movie.maTheLoai)
   const [directors,setDirectors] =  useState(props.movie.daoDien)
   const [country,setCountry] =  useState(props.movie.nuocSanXuat)
   const [trailer,setTrailer] =  useState(props.movie.trailer)
@@ -18,9 +15,6 @@ function Edit_movie( props) {
   const [status,setStatus] =  useState(props.movie.trangThai)
   const [categories,setCategories] = useState(props.allcategory)
   console.log(categories)
-  const Validate = (e) =>
-  {
-  }
   const ResizeTextarea =(e) =>
   {
    const textarea = document.querySelector("textarea");
@@ -62,8 +56,8 @@ function Edit_movie( props) {
                 <label for="name">Tên phim<span>*</span></label>
                 <input type="text" id="name" name="name" class="input-add" placeholder="Tên phim" required  onChange={(e) => setName(e.target.value)} defaultValue=  {name}></input>
                 <label for="category">Thể loại<span>*</span></label>
-                <select name="cars" id="cars" onChange={(e) => setCategory(e.target.value)} value={category}>
-                  {categories.map(category =>(<option value={category.id}>{category.id}</option>))}
+                <select name="category" id="category" onChange={(e) => setCategory(e.target.value)} value={category}>
+                  {categories.map(category => {return (<option key={category.id} value={category.id}>{category.tenTheLoai}</option>)})}
                 </select>
                 <label for="content">Nội dung <span>*</span></label>
                 <textarea contenteditable="true" id="content" name="content" class="input-add" placeholder="Nội dung phim" onBlur={checkContent} onChange={(e)=> setContent(e.target.value)} onFocus={ResizeTextarea}  defaultValue={content} required ></textarea>
@@ -81,12 +75,12 @@ function Edit_movie( props) {
                 <input class="input-add"  type='text' id='poster'name='poster' required multiple onChange={(e) => setPoster(e.target.value)} defaultValue={poster}></input>
                 <label for="status">Trạng thái</label>
                 <select name="cars" id="cars" onChange={(e) => setStatus(e.target.value)}>
+                <option value="đang chiếu">Đang chiếu</option>
                 <option value="Đã chiếu">Đã chiếu</option>
-                  <option value="đang chiếu">Đang chiếu</option>
                 </select>
                 {/* <option value={option.value} selected={optionsState == option.value}>{option.label}</option> */}
             <div className='submit-add'>
-            <input type='submit' id ='cgv-btnlogin'  onClick={(e) =>Validate(e)} value='Edit movie'></input>
+            <input type='submit' id ='cgv-btnlogin' value='Edit movie'></input>
             </div>
             </form>
       

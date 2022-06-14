@@ -18,8 +18,8 @@ const Schedule = (props) => {
     return (
         <>
             <td>{props.schedule.id} </td>
-            <td>{props.schedule.maPhong}</td>
-            <td>{props.schedule.maPhim}</td>
+            <td>{props.schedule.phongChieu.tenPhong}</td>
+            <td>{props.schedule.phim.tenPhim}</td>
             <td>{props.schedule.ngayChieu}</td>
             <td>{props.schedule.trangThai}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>

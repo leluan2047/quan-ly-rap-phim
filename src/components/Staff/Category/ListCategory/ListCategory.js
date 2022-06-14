@@ -29,8 +29,8 @@ export default function ListCategory() {
                 <tr>
                     <th width="15%" >ID </th>
                     <th  width="15%">Tên thể loại</th>
-                    <th width="8%">Trạng thái</th> 
-                    <th width="8%" colSpan={2}>Hành động</th>
+                    <th width="15%">Trạng thái</th> 
+                    <th width="15%" colSpan={2}>Hành động</th>
                 </tr>   
                 {categories.map(category =>(<tr> <Category category={category} handleReloadComponent = {fetchData} /></tr>))}   
 </table>

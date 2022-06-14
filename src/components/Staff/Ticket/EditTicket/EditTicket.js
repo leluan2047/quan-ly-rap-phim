@@ -2,13 +2,14 @@ import React  from 'react';
 import { axios } from '../../../../axios';
 import { useState } from 'react';
 import './EditTicket.scss'
+import moment from 'moment'
 
 function EditTicket({ticket}) {
-  const [maloaive,setMaloaive]= useState(ticket.maLoaiVe)
-  const [masuatchieu,setMasuatchieu] = useState(ticket.maSuatChieu)
-  const [maphong,setMaphong] =  useState(ticket.maPhong)
-  const [maphim,setMaphim] =  useState(ticket.maPhim)
-  const [ngaymua,setNgaymua] =  useState(ticket.ngayMua)
+  const [maloaive,setMaloaive]= useState(ticket.loaiVe.id)
+  const [masuatchieu,setMasuatchieu] = useState(ticket.suatChieu.id)
+  const [maphong,setMaphong] =  useState(ticket.phongChieu.id)
+  const [maphim,setMaphim] =  useState(ticket.phim.id)
+  const [ngaymua,setNgaymua] =  useState(moment.utc(ticket.ngayMua).format('YYYY-MM-DDTHH:mm:ss'))
   const [trangthai,setTrangthai] =  useState(ticket.trangThai)
 
   const handleSubmit = (e) =>

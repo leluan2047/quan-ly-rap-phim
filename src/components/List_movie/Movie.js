@@ -21,7 +21,7 @@ const Movie = (props) => {
         <>
             <td>{props.movie.tenPhim} </td>
             <td>{props.movie.noiDungPhim}</td>
-            <td>{props.movie.maTheLoai} </td>
+            <td>{props.movie.theLoaiPhim.tenTheLoai} </td>
             <td>{props.movie.thoiLuong}</td>
             <td>{props.movie.daoDien} </td>
             <td>{props.movie.nuocSanXuat}</td>

@@ -10,20 +10,6 @@ import CreateAdvertisement from '../CreateAdvertisement/CreateAdvertisement';
 export default function ListAdvertisement() {
     const [ads, setAds] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
-    // const handleReload = () =>
-    // {
-    //     fetchData()
-    // }
-    // async function fetchData()
-    //         {
-    //             let res = await getAllAdvertisement();
-    //             setAds(res.data.data)
-    //             console.log(ads)
-    //         }
-    // useEffect (() =>
-    // {
-    //     fetchData()
-    // },[])
     async function fetchData()
             {
                 let res = await getAllAdvertisement();
@@ -43,12 +29,12 @@ export default function ListAdvertisement() {
             <button className='btn-add' onClick={() =>setOpenPopup(true)}><AddIcon/>Add new</button>
             <table id="ads">
                 <tr>
-                    <th width="15%" >Mã phim </th>
-                    <th  width="15%">Tên quảng cáo</th>
-                    <th width="8%">Nội dung</th> 
+                    <th width="19%" >Tên phim </th>
+                    <th  width="19%">Tên quảng cáo</th>
+                    <th width="17%">Nội dung</th> 
                     <th  width="15%">Thời gian bắt đầu</th>
-                    <th width="8%">Thời gian kết thúc</th> 
-                    <th width="8%" colSpan={2}>Hành động</th>
+                    <th width="15%">Thời gian kết thúc</th> 
+                    <th width="10%" colSpan={2}>Hành động</th>
                 </tr>   
                 {ads.map(ad =>(<tr> <Advertisement ad={ad}  handleReloadComponent = {fetchData} /></tr>))}   
 </table>
@@ -57,7 +43,6 @@ export default function ListAdvertisement() {
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
                 handleReloadComponent = {fetchData}
-                //handleReloadComponent = {handleReload}
             >
                 <CreateAdvertisement openPopup = {openPopup}></CreateAdvertisement>
             </Popup>

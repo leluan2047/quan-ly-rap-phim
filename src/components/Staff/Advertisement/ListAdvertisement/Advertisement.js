@@ -4,10 +4,6 @@ import EditAdvertisement from "../EditAdvertisement/EditAdvertisement";
 import {axios} from '../../../../axios';
 const Advertisement = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
-    // useEffect(() => {
-    //     // handleCloseUpdate();
-    //     // handleCloseDelete();
-    // }, [movie]);
     const DeleteAds = () =>
     {
         axios.delete(`/advertisement/${props.ad.id}`)
@@ -23,7 +19,7 @@ const Advertisement = (props) => {
     }
     return (
         <>
-            <td>{props.ad.maPhim} </td>
+            <td>{props.ad.phim.tenPhim} </td>
             <td>{props.ad.tenQuangCao}</td>
             <td>{props.ad.noiDung}</td>
             <td>{props.ad.timeStart}</td>
