@@ -67,7 +67,7 @@ function GetAllSeat() {
                 {seat.map(item => {
                     return (
                         <tr key={item.id}>
-                            <td>{item.maPhong}</td>
+                            <td>{item.phongChieu.tenPhong}</td>
                             <td>{item.trangThai}</td>
                             <td>{item.vitriDay}</td>
                             <td>{item.vitriCot}</td>

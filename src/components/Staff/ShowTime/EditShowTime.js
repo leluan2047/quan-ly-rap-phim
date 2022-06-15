@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { axios } from "../../../axios";
 import "./EditShowTime.scss";
 import moment from 'moment'
+
 function EditShowTime(props) {
     const [danhSachLichChieu, setDanhSachLichChieu] = useState([]);
 
@@ -74,7 +75,7 @@ function EditShowTime(props) {
     return (
         <div className='editShowTime-container'>
             <div className='title'>
-                <h1 >Edit&ensp;Seat&ensp;</h1>
+                <h1 >Sửa&ensp;suất chiếu&ensp;</h1>
             </div>
 
 
@@ -83,7 +84,7 @@ function EditShowTime(props) {
                 <select name='lichChieu' onChange={(e) => setMaLichChieu(e.target.value)} value={maLichChieu}>
                     {danhSachLichChieu.map(item => {
                         return (
-                            <option key={item.id} value={item.id}>{item.ngayChieu}</option>
+                            <option key={item.id} value={item.id}>{moment.utc(item.ngayChieu).format('YYYY-MM-DD ')}</option>
                         )
                     })}
                 </select>

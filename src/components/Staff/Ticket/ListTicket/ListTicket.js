@@ -23,7 +23,7 @@ export default function ListTicket() {
             <button className='btn-add' onClick={() =>setOpenPopup(true)}><AddIcon/>Add new</button>
             <table id="movies">
                 <tr>
-                    <th width="15%" >ID </th>
+                    <th width="15%" >Số thứ tự </th>
                     <th  width="15%">Tên suất chiếu</th>
                     <th  width="15%">Tên loại vé</th>
                     <th  width="15%">Tên phòng</th>

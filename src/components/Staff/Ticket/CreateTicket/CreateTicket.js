@@ -80,7 +80,7 @@ function CreateTicket() {
       .get("/seat")
       .then(res => {
         let gheThuocPhong = res.data.filter(e => {
-          return e.maPhong == idPhong
+          return e.phongChieu.id == idPhong
         })
         setDanhSachGhe(gheThuocPhong);
         // console.log(gheThuocPhong);
@@ -117,6 +117,8 @@ function CreateTicket() {
             {danhSuatChieu.map(item => {
               return (
                 <option key={item.id} value={item.id}>
+                  {item.tenSuatChieu}:
+                  &nbsp;
                   Từ
                   &nbsp;
                   {moment.utc(item.timeStart).format('YYYY-MM-DD HH:mm:ss')}

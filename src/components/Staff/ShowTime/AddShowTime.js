@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { axios } from "../../../axios";
 import "./AddShowTime.scss";
-
+import moment from "moment"
 
 function AddShowTime() {
     const [danhSachLichChieu, setDanhSachLichChieu] = useState([]);
@@ -57,12 +57,12 @@ function AddShowTime() {
             </div>
 
             <form className='addShowTime-form' name='' id='' onSubmit={handleSubmit} >
-                <label for="tenSuatChieu">mã Lịch chiếu<span>*</span></label>
+                <label for="tenSuatChieu">Lịch chiếu<span>*</span></label>
                 <select name='lichChieu' onChange={e => setLichChieu(e.target.value)} required >
                     <option></option>
                     {danhSachLichChieu.map(item => {
                         return (
-                            <option key={item.id} value={item.id}>{item.id}</option>
+                            <option key={item.id} value={item.id}>{moment.utc(item.ngayChieu).format('YYYY-MM-DD ')}</option>
                         )
                     })}
                 </select>

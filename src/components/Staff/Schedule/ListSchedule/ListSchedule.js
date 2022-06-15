@@ -27,8 +27,8 @@ export default function ListSchedule() {
             <table id="positions">
                 <tr>
                     <th width="10%" >ID </th>
-                    <th  width="15%">Mã phòng</th>
-                    <th  width="15%">Mã phim</th>
+                    <th  width="15%">Tên phòng</th>
+                    <th  width="15%">Tên phim</th>
                     <th  width="15%">Ngày chiếu</th>
                     <th  width="10%">Trạng thái</th>
                     <th width="15%" colSpan={2}>Hành động</th>

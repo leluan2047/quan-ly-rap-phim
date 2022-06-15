@@ -29,19 +29,19 @@ function GetAllShowTime() {
 
     const deleteData = (id) => {
         axios
-        .delete(`showtime/${id}`)
-        .then(function (res) {
-            if (res.data.message === "Delete showtime successfully") {
-                window.alert("Xóa thành công");
-                getData();
-            }
-            else {
-                window.alert("Xóa thất bại");
-            }
-        })
-        .catch(function (err) {
-            console.log(err)
-        })
+            .delete(`showtime/${id}`)
+            .then(function (res) {
+                if (res.data.message === "Delete showtime successfully") {
+                    window.alert("Xóa thành công");
+                    getData();
+                }
+                else {
+                    window.alert("Xóa thất bại");
+                }
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
     }
 
 
@@ -69,7 +69,7 @@ function GetAllShowTime() {
                 {showTimes.map(item => {
                     return (
                         <tr key={item.id}>
-                            <td>{item.maLichChieu}</td>
+                            <td>{moment.utc(item.lichChieu.ngayChieu).format('YYYY-MM-DD ')}</td>
                             <td>{item.tenSuatChieu}</td>
                             <td>{item.trangThai}</td>
                             <td>{moment.utc(item.timeStart).format('YYYY-MM-DD HH:mm:ss')}</td>
