@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Admin.scss';
 import List_movie from '../../components/List_movie/List_movie'
 import PersonalInfo from '../Account/PersonalInfo/PersonalInfo';
-import List_KhachHang from '../../components/List_KhachHang/List_KhachHang';
+import List_KhachHang from '../../components/Staff/KhachHang/List_KhachHang/List_KhachHang';
 import ListPosition from '../../components/Staff/Position/ListPosition/ListPositon';
 import ListAdvertisement from '../../components/Staff/Advertisement/ListAdvertisement/ListAdvertisement';
 import ListCategory from '../../components/Staff/Category/ListCategory/ListCategory';
@@ -31,7 +31,7 @@ function Admin() {
                             <li> <Link className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)} to='#'>THÔNG TIN CÁ NHÂN</Link></li>
                             <li> <Link className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)} to='#'>QUẢN LÝ PHIM</Link></li>
                             <li> <Link className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)} to='#'>QUẢN LÝ KHÁCH HÀNG</Link></li>
-                            <li> <Link className={toggleState === 4 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(4)} to='#'>POSITION</Link></li>
+                            {/* <li> <Link className={toggleState === 4 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(4)} to='#'>POSITION</Link></li> */}
                             <li> <Link className={toggleState === 5 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(5)} to='#'>ADVERTISEMENT</Link></li>
                             <li> <Link className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)} to='#'>CATEGORY</Link></li>
                             <li> <Link className={toggleState === 7 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(7)} to='#'>SCHEDULE</Link></li>
@@ -45,7 +45,7 @@ function Admin() {
                     <div className='content-tabs'>
                         {toggleState === 1 &&
                             <div className="content">
-                                {/* <PersonalInfo></PersonalInfo> */}
+                                <PersonalInfo></PersonalInfo>
                             </div>
                         }
                         {toggleState === 2 &&
@@ -55,7 +55,7 @@ function Admin() {
                         }
                         {toggleState === 3 &&
                             <div className="content">
-                                {/* <List_KhachHang></List_KhachHang> */}
+                                <List_KhachHang></List_KhachHang>
                             </div>
                         }
                         {toggleState === 4 &&
