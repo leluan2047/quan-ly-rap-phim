@@ -23,8 +23,8 @@ const TicketType = (props ) => {
     return (
         <>
             <td>{props.ticketType.id} </td>
-            <td>{props.ticketType.giaVe}</td>
-            <td>{props.ticketType.tenLoaiVe} </td>
+            <td>{props.ticketType.tenLoaiVe}</td>
+            <td>{props.ticketType.giaVe} </td>
             <td>{props.ticketType.trangThai}</td>
             <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt'></i></button></td>
             <td><button className='btn-delete' onClick={() => DeleteTicketType()}><i className='fas fa-trash'></i></button></td>

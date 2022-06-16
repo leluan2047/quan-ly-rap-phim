@@ -4,6 +4,85 @@ import Popup from '../../Popup';
 import { axios } from '../../../axios';
 import "./Booking.scss";
 import moment from "moment"
+import { Table } from 'antd';
+
+const columns = [
+    {
+        title: 'Tên khách hàng',
+        width: 150,
+        dataIndex: 'tenKH',
+        key: 'name',
+        fixed: 'left',
+    },
+    {
+        title: 'Số điện thoại',
+        width: 150,
+        dataIndex: 'SDT',
+        key: 'age',
+        fixed: 'left',
+    },
+    {
+        title: 'Ngày mua',
+        dataIndex: 'ngayMua',
+        width: 150,
+        key: '1',
+       
+    },
+    {
+        title: 'Suất chiếu',
+        width: 250,
+        dataIndex: 'tenSuatChieu',
+        key: '2',
+    },
+    {
+        title: 'Loại vé',
+        width: 80,
+        dataIndex: 'tenLoaiVe',
+        key: '3',
+    },
+    {
+        title: 'Phòng',
+        width: 80,
+        dataIndex: 'tenPhong',
+        key: '4',
+    },
+    {
+        title: 'Ghế',
+        width: 70,
+        dataIndex: 'tenGhe',
+        key: '5',
+    },
+    {
+        title: 'Phim',
+        dataIndex: 'tenPhim',
+        key: '6',
+    },
+    // {
+    //     title: 'Action',
+    //     key: 'operation',
+    //     fixed: 'right',
+    //     width: 100,
+    //     render: () => <div >
+    //         <button className='btn-edit' ><i className='fas fa-pencil-alt' ></i></button>&ensp;&ensp;
+    //         <button className='btn-delete' ><i className='fas fa-trash'></i></button>
+    //     </div>,
+    //   },
+     
+
+    // {
+    //   title: 'Action',
+    //   key: 'operation',
+    //   fixed: 'right',
+    //   width: 100,
+    //   render: () => <a>action</a>,
+    // },
+];
+
+
+
+
+
+
 function Booking() {
 
     const [openPopup, setOpenPopup] = useState(false);
@@ -13,25 +92,34 @@ function Booking() {
 
     const [danhSachSuatChieu, setDanhSachSuatChieu] = useState([])
 
+    const data = [];
+
     const getData = () => {
         axios
             .get("/booking")
             .then(res => {
-                setBooking(res.data)
 
+                res.data.map(item => {
+                    const x = {
+                        tenKH: item.user.khachHang.tenKH,
+                        SDT: item.user.khachHang.SDT,
+                        ngayMua: moment.utc(item.ve.ngayMua).format('YYYY-MM-DD hh:mm'),
+
+                        tenSuatChieu: moment.utc(item.ve.suatChieu.timeStart).format('YYYY-MM-DD hh:mm') + " đến "
+                            + moment.utc(item.ve.suatChieu.timeEnd).format('YYYY-MM-DD hh:mm'),
+                        tenLoaiVe: item.ve.loaiVe.tenLoaiVe,
+                        tenPhong: item.ve.phongChieu.tenPhong,
+                        tenPhim: item.ve.phim.tenPhim,
+                        tenGhe: "chua co"
+                    }
+                    data.push(x);
+                })
+                setBooking(data);
             })
             .catch(err => {
                 console.log(err)
             })
 
-        axios
-            .get('/showtime')
-            .then(res => {
-                setDanhSachSuatChieu(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
     }
 
     const deleteData = (id) => {
@@ -60,68 +148,16 @@ function Booking() {
     }
     return (
         <div className='booking-container'>
+            
+            <Table
+                columns={columns}
+                dataSource={booking}
+                scroll={{
+                    x: 1500,
+                }}
+            />
+            {console.log(booking)}
 
-
-            <table id="booking">
-                <div className='suatChieu-info'>
-                    <button className='btn-add' onClick={() => setOpenPopup(true)}><AddIcon />Add new</button>
-                    <div>
-                        {danhSachSuatChieu.map(item => {
-                            return (
-                                <p key={item.id}>
-                                    {item.tenSuatChieu} : {moment.utc(item.timeStart).format('YYYY-MM-DD HH:mm:ss')} đến {moment.utc(item.timeEnd).format('YYYY-MM-DD HH:mm:ss')}
-                                </p>
-                            )
-                        })}
-                    </div>
-                </div>
-                <tr>
-                    <th width="7%" >Tên khách hàng</th>
-                    <th width="7%">Số điện thoại</th>
-                    <th width="10%">Ngày mua</th>
-                    <th width="7%">Suất chiếu</th>
-                    <th width="4%">Loại vé</th>
-                    <th width="7%">Phòng</th>
-                    <th width="7%">Ghế</th>
-                    <th width="7%">Phim</th>
-                    <th width="4%" colSpan={2}>Hành động</th>
-                </tr>
-                {booking.map(item => {
-                    return (
-                        <tr key={item.id}>
-                            <td>{item.user.khachHang.tenKH}</td>
-                            <td>{item.user.khachHang.SDT}</td>
-                            <td>
-                                {moment.utc(item.ve.ngayMua).format('YYYY-MM-DD HH:mm:ss')}
-                            </td>
-                            <td>{item.ve.suatChieu.tenSuatChieu} </td>
-                            <td>{item.ve.loaiVe.tenLoaiVe}</td>
-                            <td>{item.ve.phongChieu.tenPhong}</td>
-                            <td>{"Ghe chua co"}</td>
-                            <td>{item.ve.phim.tenPhim}</td>
-                            <td><button className='btn-edit' onClick={() => editBooking(item.id)}><i className='fas fa-pencil-alt' ></i></button></td>
-                            <td><button className='btn-delete' onClick={(e) => deleteData(item.id)}><i className='fas fa-trash'></i></button></td>
-                        </tr>
-                    )
-                })}
-            </table>
-            <Popup
-                title="Thêm mới"
-                openPopup={openPopup}
-                setOpenPopup={setOpenPopup}
-                handleReloadComponent={getData}
-            >
-                {/* <AddSeat></AddSeat> */}
-            </Popup>
-
-            <Popup
-                title="Sửa "
-                openPopup={openPopupEdit}
-                setOpenPopup={setOpenPopupEdit}
-                handleReloadComponent={getData}
-            >
-                {/* <EditSeat id={id}></EditSeat> */}
-            </Popup>
         </div>
     )
 }

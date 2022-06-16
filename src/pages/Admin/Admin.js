@@ -12,6 +12,7 @@ import ListSchedule from '../../components/Staff/Schedule/ListSchedule/ListSched
 import GetAllRoom from '../../components/GetAllRoom/GetAllRoom';
 import ListTicketType from '../../components/Staff/TicketType/ListTicketType/ListTicketType'
 import ListTicket from '../../components/Staff/Ticket/ListTicket/ListTicket';
+import Booking from '../../components/Staff/ByTicket/Booking';
 
 function Admin() {
     const [toggleState, setToggleState] = useState(1);
@@ -44,7 +45,7 @@ function Admin() {
                     <div className='content-tabs'>
                         {toggleState === 1 &&
                             <div className="content">
-                                <PersonalInfo></PersonalInfo>
+                                {/* <PersonalInfo></PersonalInfo> */}
                             </div>
                         }
                         {toggleState === 2 &&
@@ -54,7 +55,7 @@ function Admin() {
                         }
                         {toggleState === 3 &&
                             <div className="content">
-                                <List_KhachHang></List_KhachHang>
+                                {/* <List_KhachHang></List_KhachHang> */}
                             </div>
                         }
                         {toggleState === 4 &&
@@ -89,7 +90,7 @@ function Admin() {
                         }
                         {toggleState === 10 &&
                             <div className="content">
-                                <ListTicket/>
+                                <Booking></Booking>
                             </div>
                         }
                     </div>

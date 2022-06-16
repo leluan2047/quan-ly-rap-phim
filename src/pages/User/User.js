@@ -5,6 +5,7 @@ import "./User.scss";
 import { getProfile } from "../../Service/Staff_service";
 import { axios } from "../../axios";
 import PersonalInfo from "../Account/PersonalInfo/PersonalInfo";
+import ListBook from "../../components/User/Booking/ListBook";
 function User() {
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
@@ -47,17 +48,20 @@ function User() {
         </div>
         <div class="main">
           <div className="content-tabs">
+            <br></br>
             {toggleState === 1 &&
               <div
                 className="content"
               >
-                <PersonalInfo></PersonalInfo>
+                {/* <PersonalInfo></PersonalInfo> */}
               </div>
             }
             {toggleState === 2 &&
               <div
                 className="content"
-              ></div>
+              >
+                <ListBook></ListBook>
+              </div>
             }
           </div>
         </div>
