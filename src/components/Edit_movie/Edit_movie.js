@@ -7,7 +7,7 @@ function Edit_movie( props) {
   const [time,setTime]= useState(props.movie.thoiLuong)
   const [content,setContent] = useState(props.movie.noiDungPhim)
   const [name,setName] =  useState(props.movie.tenPhim)
-  const [category,setCategory] =  useState(props.movie.maTheLoai)
+  const [category,setCategory] =  useState(props.movie.theLoaiPhim)
   const [directors,setDirectors] =  useState(props.movie.daoDien)
   const [country,setCountry] =  useState(props.movie.nuocSanXuat)
   const [trailer,setTrailer] =  useState(props.movie.trailer)
@@ -56,7 +56,7 @@ function Edit_movie( props) {
                 <label for="name">Tên phim<span>*</span></label>
                 <input type="text" id="name" name="name" class="input-add" placeholder="Tên phim" required  onChange={(e) => setName(e.target.value)} defaultValue=  {name}></input>
                 <label for="category">Thể loại<span>*</span></label>
-                <select name="category" id="category" onChange={(e) => setCategory(e.target.value)} value={category}>
+                <select name="category" id="category" onChange={(e) => setCategory(e.target.value)} value={category.id}>
                   {categories.map(category => {return (<option key={category.id} value={category.id}>{category.tenTheLoai}</option>)})}
                 </select>
                 <label for="content">Nội dung <span>*</span></label>
