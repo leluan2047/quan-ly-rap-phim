@@ -81,7 +81,7 @@ function Book() {
             .get("/seat")
             .then(res => {
                 let gheThuocPhong = res.data.filter(e => {
-                    return (e.phongChieu.id == idPhong)
+                    return (e.phongChieu.id == idPhong && e.trangThai === "Còn trống")
                 })
                 setDanhSachGhe(gheThuocPhong);
 
@@ -141,21 +141,33 @@ function Book() {
                 }
                 } required >
                     <option value="">Chọn phòng</option>
-                    {danhSachPhong.map(item => {
-                        return (
-                            <option key={item.id} value={item.id}>{item.tenPhong}</option>
-                        )
-                    })}
+                    {
+
+                        danhSachPhong.map((item) => {
+                            return (
+
+                                <option key={item.id} value={item.id}>{item.tenPhong}</option>
+                            )
+                        })
+
+                    }
                 </select>
 
                 <label for="maghe">Ghế <span>*</span></label>
-                <div>
-                    {danhSachGhe.map(item => {
-                        return(
-                            <div>a</div>
+                {/* <div style={{ display: 'flex'}}>
+                    {danhSachGhe.map((item, index, array) => {
+                        return (
+                            <>
+                                <div>
+                                    {index != 0 ? (array[index].vitriDay != array[index - 1].vitriDay ? "" : "") : ""}
+                                    {item.vitriDay}{item.vitriCot}
+                                </div>
+
+                            </>
+
                         )
                     })}
-                </div>
+                </div> */}
 
                 <select name='maghe' onChange={e => setMaghe(e.target.value)} required >
                     <option value="">Chọn ghế</option>

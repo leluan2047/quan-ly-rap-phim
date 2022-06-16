@@ -7,11 +7,12 @@ import Login_Register from './components/Login_Register/Login_Register';
 import PersonalInfo from './pages/Account/PersonalInfo/PersonalInfo';
 import Admin from './pages/Admin/Admin'
 import User from './pages/User/User'
+import Book from './components/User/Booking/Book';
 function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        {/* <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/login' element={<Login_Register />} />
@@ -19,7 +20,8 @@ function App() {
           <Route exact path = '/admin' element={<Admin />}/>
           <Route exact path = '/user' element={<User />}/>
         </Routes>
-        <Footer />
+        <Footer /> */}
+        <Book></Book>
       </Router>
     </div>
   );
