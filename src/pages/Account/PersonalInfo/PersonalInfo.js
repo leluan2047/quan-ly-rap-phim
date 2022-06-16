@@ -10,17 +10,18 @@ function PersonalInfo() {
   const [gioiTinh, setGioiTinh] = useState("");
   const [CMND, setCMND] = useState("");
   const [SDT, setSDT] = useState("");
+  async function fetchData() {
+    let res = await getProfile();
+    setTenKH(res.data.khachHang.tenKH);
+    setGioiTinh(res.data.khachHang.gioiTinh);
+    setCMND(res.data.khachHang.CMND);
+    setSDT(res.data.khachHang.SDT);
+    console.log(res.data);
+    setProfile(res.data);
+  }
   useEffect(() => {
       console.log("personInfo render")
-    async function fetchData() {
-      let res = await getProfile();
-      setTenKH(res.data.khachHang.tenKH);
-      setGioiTinh(res.data.khachHang.gioiTinh);
-      setCMND(res.data.khachHang.CMND);
-      setSDT(res.data.khachHang.SDT);
-      console.log(res.data);
-      setProfile(res.data);
-    }
+    
     fetchData();
   }, []);
   const handleChange = () => {
@@ -29,7 +30,20 @@ function PersonalInfo() {
       setShow(false);
     }
   };
-
+  const handleSubmit = (e) => {
+    var gioiTinh = document.querySelector("input:checked").value
+    e.preventDefault();
+    console.log(tenKH, gioiTinh, CMND, SDT);
+    axios.put("/users/me", {tenKH: tenKH, gioiTinh: gioiTinh, CMND: CMND, SDT: SDT})
+      .then(result => {
+        console.log(result)
+        alert(result.data.message)
+        //fetchData()
+      })
+      .catch(error => {
+        alert(error.response.data.message)
+      })
+  }
   const content = show ? (
     <div>
       <div class="old_password">
@@ -71,6 +85,7 @@ function PersonalInfo() {
           id="form-validate"
           class="form-PersonnalInfo"
           enctype="multipart/form-data"
+          onSubmit={handleSubmit}
         >
           <div className="div1">
             <div className="div_left">
@@ -100,6 +115,7 @@ function PersonalInfo() {
                     placeholder=""
                     maxlength="255"
                     class="input-text required-entry"
+                    onChange={(e) => setTenKH(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -117,6 +133,7 @@ function PersonalInfo() {
                     id="telephone"
                     title="Phone Number"
                     class="input-text validate-mobile required-entry"
+                    onChange={(e) => setSDT(e.target.value)}
                   ></input>
                 </div>
               </div>
@@ -138,7 +155,7 @@ function PersonalInfo() {
                   CMND/CCCD&nbsp;<span>*</span>
                 </label>
                 <div class="input-box">
-                  <input type="text" defaultValue={CMND} readOnly></input>
+                  <input type="text" defaultValue={CMND} onChange={(e) => setCMND(e.target.value)}></input>
                 </div>
               </div>
               <div class="change_password">
