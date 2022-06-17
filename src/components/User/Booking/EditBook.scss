@@ -1,4 +1,6 @@
 .editBook-container {
+    $unit-width: 40px;
+
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -81,6 +83,35 @@
 
             &:hover input[type=submit] {
                 background-color: black;
+            }
+        }
+
+        .seat-group {
+
+            // border: 1px solid red;
+            display: flex;
+            flex-wrap: wrap;
+            width: $unit-width*13;
+            margin: auto;
+            margin-bottom: 30px;
+
+            .seat-button {
+
+                width: $unit-width;
+                border: 2px solid #26CC56;
+                margin-left: 10px;
+                margin-top: 10px;
+                text-align: center;
+
+                &:hover {
+                    cursor: pointer;
+
+                }
+
+            }
+
+            .seated {
+                border: 2px solid #f84a3c;
             }
         }
 

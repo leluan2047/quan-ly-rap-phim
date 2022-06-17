@@ -20,21 +20,26 @@ function EditBook(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios
-            .post('/booking', {
-                "maSuatChieu": masuatchieu,
-                "maLoaiVe": maloaive,
-                "maPhong": maphong,
-                "maPhim": maphim,
-                "maGhe": maghe,
-                "ngayMua": moment().format('YYYY-MM-DDTHH-mm-ss') + ".000z"
-            })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        if (maghe == "")
+            window.alert("Bạn chưa chọn ghế");
+        else {
+            axios
+                .post('/booking', {
+                    "maSuatChieu": masuatchieu,
+                    "maLoaiVe": maloaive,
+                    "maPhong": maphong,
+                    "maPhim": maphim,
+                    "maGhe": maghe,
+                    "ngayMua": moment().format('YYYY-MM-DDTHH-mm-ss') + ".000z"
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
 
     }
 
@@ -83,7 +88,7 @@ function EditBook(props) {
                 setMasuatchieu(res.data.ve.suatChieu.id)
                 setMaphong(res.data.ve.phongChieu.id)
                 setMaphim(res.data.ve.phim.id);
-                
+
             })
             .catch(err => {
                 console.log(err)
@@ -105,8 +110,20 @@ function EditBook(props) {
                 console.log(err)
             })
     }
+
+
+
+    const datGhe = (idGhe, trangThai) => {
+        if (trangThai === "Đã đặt")
+            window.alert("Ghế đã đặt, vui lòng chọn ghế khác")
+        else {
+            setMaghe(idGhe);
+        }
+    }
+
     useEffect(() => {
         getData();
+        
     }, [])
 
 
@@ -165,6 +182,27 @@ function EditBook(props) {
                 </select>
 
                 <label for="maghe">Ghế <span>*</span></label>
+                <div>
+                    <div className='seat-group' >
+                        {danhSachGhe.map((item, index, array) => {
+                            return (
+                                <>
+                                    <div className={item.trangThai === "Đã đặt" ? 'seated seat-button' : 'seat-button'}
+                                        onClick={e => {
+                                            datGhe(item.id, item.trangThai)
+                                        }}
+                                        style={item.id == maghe ? { background: 'green' } : {}}
+                                    >
+                                        {/* {index != 0 ? (array[index].vitriDay != array[index - 1].vitriDay ? "" : "") : ""} */}
+                                        {item.vitriDay}{item.vitriCot}
+                                    </div>
+
+                                </>
+
+                            )
+                        })}
+                    </div>
+                </div>
                 <select name='maghe' onChange={e => setMaghe(e.target.value)} required value={maghe}>
                     <option value="">Chọn ghế</option>
                     {danhSachGhe.map(item => {
