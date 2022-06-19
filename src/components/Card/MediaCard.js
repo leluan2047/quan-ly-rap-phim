@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import Details_movie from "../Details_movie/Details_movie";
 import "./MediaCard.scss";
 import Popup from "../Popup";
+import Book from "../User/Booking/Book";
 function MediaCard(props) {
+
   const [openPopup, setOpenPopup] = useState(false);
+  const [openPopupByTicket, setOpenPopupByTicket] = useState(false);
+
   return (
     <>
       <div className="card-container">
@@ -12,7 +16,7 @@ function MediaCard(props) {
           <div className="button" onClick={() => setOpenPopup(true)}>
             Xem chi tiết{" "}
           </div>
-          <div className="button">Mua vé</div>
+          <div className="button" onClick={() => setOpenPopupByTicket(true)}>Mua vé</div>
         </div>
       </div>
       <Popup
@@ -21,6 +25,15 @@ function MediaCard(props) {
         setOpenPopup={setOpenPopup}
       >
         <Details_movie id={props.id}></Details_movie>
+      </Popup>
+
+
+      <Popup
+        // title="Edit movie"
+        openPopup={openPopupByTicket}
+        setOpenPopup={setOpenPopupByTicket}
+      >
+        <Book idPhim = {props.id}></Book>
       </Popup>
     </>
   );

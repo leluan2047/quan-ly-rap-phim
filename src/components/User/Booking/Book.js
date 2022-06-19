@@ -9,7 +9,7 @@ import CardFilm from "../../Card/CardFilm";
 const { Meta } = Card;
 var maGhetemp = [];
 
-function Book() {
+function Book(props) {
 
     const breakPoints = [
         { width: 500, itemsToShow: 2 },
@@ -101,14 +101,34 @@ function Book() {
                 console.log(err)
             })
 
-        axios
-            .get('/movies')
-            .then(res => {
-                setDanhSachPhim(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        // Neu id phim ton tai thi chi lay thong tin 1 phim, con khong thi lay danh sach phim
+        if (props.idPhim) {
+            setMaphim(props.idPhim)
+
+            axios
+                .get(`/movies/${props.idPhim}`)
+                .then(res => {
+                    var x = [" "]
+                    x.push(res.data)
+                    var y =[]
+                    y = x.filter(item => item!=" ");
+                    setDanhSachPhim(y)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else {
+            axios
+                .get('/movies')
+                .then(res => {
+                    setDanhSachPhim(res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        ////--------------------------------------------------------
     }
 
     const getGhe = (idPhong) => {
@@ -146,9 +166,6 @@ function Book() {
             }
 
         }
-    }
-    const chonPhim = (id) => {
-        setMaphim(id)
     }
 
     useEffect(() => {

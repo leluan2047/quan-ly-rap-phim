@@ -2,8 +2,16 @@ import React, { useEffect, useState } from 'react'
 import moment from "moment";
 import { axios } from "../../../axios";
 import "./EditBook.scss";
+import CardFilm from "../../Card/CardFilm";
+import Carousel from 'react-elastic-carousel';
 
 function EditBook(props) {
+
+    const breakPoints = [
+        { width: 500, itemsToShow: 2 },
+        { width: 800, itemsToShow: 2 },
+        { width: 1100, itemsToShow: 3 },
+    ]
 
     const [maloaive, setMaloaive] = useState("")
     const [masuatchieu, setMasuatchieu] = useState("")
@@ -88,7 +96,7 @@ function EditBook(props) {
                 setMasuatchieu(res.data.ve.suatChieu.id)
                 setMaphong(res.data.ve.phongChieu.id)
                 setMaphim(res.data.ve.phim.id);
-
+                setMaghe(res.data.ve.ghe.id)
             })
             .catch(err => {
                 console.log(err)
@@ -123,7 +131,7 @@ function EditBook(props) {
 
     useEffect(() => {
         getData();
-        
+
     }, [])
 
 
@@ -203,17 +211,48 @@ function EditBook(props) {
                         })}
                     </div>
                 </div>
-                <select name='maghe' onChange={e => setMaghe(e.target.value)} required value={maghe}>
+                {/* <select name='maghe' onChange={e => setMaghe(e.target.value)} required value={maghe}>
                     <option value="">Chọn ghế</option>
                     {danhSachGhe.map(item => {
                         return (
                             <option key={item.id} value={item.id}>{item.vitriDay}-{item.vitriCot}</option>
                         )
                     })}
-                </select>
+                </select> */}
                 <label for="maphim">Phim <span>*</span></label>
-                <select name='maphim' onChange={e => setMaphim(e.target.value)} required value={maphim} >
-                    <option value="">Chọn phim</option>
+                <Carousel breakPoints={breakPoints}>
+                    {/* {
+                        movies.map(item => {
+                            return (
+                                <MediaCard image={item.poster} id={item.id}></MediaCard>
+                            );
+                        })
+                    } */}
+
+                    {
+                        danhSachPhim.map(item => {
+                            return (
+                                <div className="cardFilm"
+                                    onClick={e => setMaphim(item.id)}
+                                    style={item.id == maphim ? { border: '2px solid green' } : {}}
+                                >
+
+                                    <CardFilm
+                                        key={item.id}
+                                        tenPhim={item.tenPhim}
+                                        thoiLuong={item.thoiLuong}
+                                        trangThai={item.trangThai}
+                                        theLoai={item.theLoaiPhim.tenTheLoai}
+                                        img={item.poster}
+                                    ></CardFilm>
+
+                                </div>
+                            );
+                        })
+                    }
+                </Carousel>
+                <select name='maphim' value={maphim} required disabled  >
+                    <option value="">Bạn chưa chọn phim</option>
                     {danhSachPhim.map(item => {
                         return (
                             <option key={item.id} value={item.id}>{item.tenPhim}</option>

@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import "./Navbar.scss";
 import logo from '../../../src/logo.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
+    const navigate = useNavigate();
     const handleClick = () => {
         setClick(!click);
     }
@@ -14,6 +16,10 @@ function Navbar() {
         setClick(false);
     }
 
+    const logout = () => {
+        localStorage.clear();
+        navigate("/")
+    }
 
     return (
         <div className='navbar'>
@@ -28,7 +34,7 @@ function Navbar() {
                         <i class="fa-solid fa-tags"></i> Tin tức và ưu đãi
                     </Link>
                 </div>
-                <div className='container-menu'>
+                <div className='container-menu' >
                     {
                         localStorage.getItem("userName") != null ?
                             <Link to='/user' className='links' style={{ width: "50px" }}>
@@ -43,7 +49,7 @@ function Navbar() {
                     }
                     {
                         localStorage.getItem("userName") != null ?
-                            <Link to='/' className='links' style={{ width: "50px" }}>
+                            <Link to='/' className='links' style={{ width: "50px" }} onClick={e => { logout() }}>
                                 &ensp; Đăng xuất
                             </Link>
 
