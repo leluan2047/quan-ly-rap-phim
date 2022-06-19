@@ -1,0 +1,35 @@
+.cardFilm-container {
+
+    width: 200px;
+
+    .img {
+        height: 320px;
+        width: 200px;
+        border: 3px solid black;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .content-film {
+        .hacker {
+            padding: 5px;
+            background: #FFFFCC;
+            width: 200px;
+            font-family: Arial, Helvetica, sans-serif;
+
+            .title {
+                word-break: break-all;
+                background: #FFFFCC;
+            }
+
+            h3 {
+                font-weight: bold;
+            }
+        }
+
+    }
+}

@@ -1,6 +1,6 @@
 .book-container {
     $unit-width: 40px;
-
+    
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -108,11 +108,23 @@
                     cursor: pointer;
 
                 }
-                           
+
             }
 
             .seated {
                 border: 2px solid #f84a3c;
+            }
+        }
+
+        .cardFilm {
+            &:hover {
+                transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                -moz-transform: scale(1.1);
+                -o-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                cursor: pointer;
+                transition: all .3s ease;
             }
         }
     }
