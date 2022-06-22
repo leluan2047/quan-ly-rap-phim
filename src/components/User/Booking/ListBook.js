@@ -90,24 +90,22 @@ function ListBook() {
 
     const getData = () => {
         axios
-            .get("/booking")
+            .get(`/booking/user/46`)
             .then(res => {
-
+                
                 res.data.map(item => {
-                    
                     const x = {
                         key :item.id,
                         id : item.id,
                         tenKH: item.user.khachHang.tenKH,
                         SDT: item.user.khachHang.SDT,
                         ngayMua: moment.utc(item.ve.ngayMua).format('YYYY-MM-DD hh:mm'),
-
                         tenSuatChieu: moment.utc(item.ve.suatChieu.timeStart).format('YYYY-MM-DD hh:mm') + " đến "
                             + moment.utc(item.ve.suatChieu.timeEnd).format('YYYY-MM-DD hh:mm'),
                         tenLoaiVe: item.ve.loaiVe.tenLoaiVe,
                         tenPhong: item.ve.phongChieu.tenPhong,
                         tenPhim: item.ve.phim.tenPhim,
-                        tenGhe: "chua co"
+                        tenGhe: item.ve.ghe.vitriDay +  "--" +  item.ve.ghe.vitriCot
                     }
                     data.push(x);
                 })
