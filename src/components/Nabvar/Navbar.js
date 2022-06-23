@@ -17,14 +17,14 @@ function Navbar() {
     }
 
     const logout = () => {
-        axios
-            .get("/users/logout")
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        // axios
+        //     .get("/users/logout")
+        //     .then(res => {
+        //         console.log(res)
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
 
         localStorage.clear();
         navigate("/")
@@ -86,8 +86,8 @@ function Navbar() {
                             Phim
                         </Link>
                         <div className='menu-content'>
-                            <Link to='/a' className='links'>Phim đang chiếu</Link>
-                            <Link to='/b' className='links'>Phim sắp chiếu</Link>
+                            <Link to='/movies/dangChieu' className='links'>Phim đang chiếu</Link>
+                            <Link to='/movies/sapChieu' className='links'>Phim sắp chiếu</Link>
                         </div>
                     </div>
                     <div className='menu'>

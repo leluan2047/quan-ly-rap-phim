@@ -4,7 +4,7 @@
     height: auto;
     width: auto;
     padding-left: 1.5%;
-
+   
     .page-title {
         border-bottom: 2px solid #222;
         padding-bottom: 10px;
@@ -29,16 +29,17 @@
             height: 520px;
 
             .div-imgVe {
-               
+
                 position: absolute;
                 bottom: 0;
                 width: 100%;
                 display: flex;
                 justify-content: center;
+
                 .img-muaVe {
-                   &:hover{
-                    cursor: pointer;
-                   }
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
 
@@ -79,4 +80,11 @@
         }
     }
 
+    
+
+}
+@media screen and (max-width: 900px) {
+    .phimDangChieu-movie {
+        margin-top: 260px;
+    }
 }

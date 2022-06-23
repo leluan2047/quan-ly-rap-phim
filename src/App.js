@@ -8,20 +8,24 @@ import PersonalInfo from './pages/Account/PersonalInfo/PersonalInfo';
 import Admin from './pages/Admin/Admin'
 import User from './pages/User/User'
 import PhimDangChieu from './components/List_movie/PhimDangChieu';
+import PhimSapChieu from './components/List_movie/PhimSapChieu';
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
-        {/* <Routes>
+        <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/login' element={<Login_Register />} />
           <Route exact path='/profile' element={<PersonalInfo />} />
           <Route exact path = '/admin' element={<Admin />}/>
           <Route exact path = '/user' element={<User />}/>
+
+          <Route exact path = '/movies/dangChieu' element={<PhimDangChieu />}/>
+          <Route exact path = '/movies/sapChieu' element={<PhimSapChieu />}/>
         </Routes>
-        <Footer /> */}
-        <PhimDangChieu></PhimDangChieu>
+        <Footer />
+        
       </Router>
     </div>
   );

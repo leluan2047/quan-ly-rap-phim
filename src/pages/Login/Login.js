@@ -45,12 +45,14 @@ function Login() {
   // }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ usernamevalue, passwordvalue })
+    
     axios.post('/users/sign-in', { username: usernamevalue, password: passwordvalue })
       .then(result => {
         console.log(result)
+
         localStorage.setItem('token', result.data.token)
         localStorage.setItem('userName', result.data.user.username)
+        localStorage.setItem('maUser',result.data.user.id)
         alert(result.data.message)
         if (result.data.user.type === 'admin') {
           navigate('/admin')
