@@ -71,7 +71,13 @@ function Navbar() {
             <div className='navbar-menu'>
                 <div className='left-logo'>
                     <Link to='/' className='links'>
-                        <img src={logo}></img>
+                        <div style={{width:'150px',height:'150px'}}>
+                            <img style={{width:'100%',height:'100%',objectFit:"contain"}}
+                             src={logo}
+                             >
+
+                             </img>
+                        </div>
                     </Link>
                 </div>
                 <div className='right-menu'>
