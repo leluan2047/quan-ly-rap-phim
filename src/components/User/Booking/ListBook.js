@@ -92,8 +92,8 @@ function ListBook() {
         axios
             .get(`/booking/user/46`)
             .then(res => {
-                
-                res.data.map(item => {
+                const arr = res.data.reverse()
+                arr.map(item => {
                     const x = {
                         key :item.id,
                         id : item.id,
@@ -107,6 +107,7 @@ function ListBook() {
                         tenPhim: item.ve.phim.tenPhim,
                         tenGhe: item.ve.ghe.vitriDay +  "--" +  item.ve.ghe.vitriCot
                     }
+                    console.log(item.id)
                     data.push(x);
                 })
                 setBooking(data);
