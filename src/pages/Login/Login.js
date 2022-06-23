@@ -49,7 +49,7 @@ function Login() {
     axios.post('/users/sign-in', { username: usernamevalue, password: passwordvalue })
       .then(result => {
         console.log(result)
-
+        localStorage.setItem('password',passwordvalue);
         localStorage.setItem('token', result.data.token)
         localStorage.setItem('userName', result.data.user.username)
         localStorage.setItem('maUser',result.data.user.id)

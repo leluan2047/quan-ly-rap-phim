@@ -90,7 +90,7 @@ function ListBook() {
 
     const getData = () => {
         axios
-            .get(`/booking/user/46`)
+            .get(`/booking/user/${localStorage.getItem('maUser')}`)
             .then(res => {
                 const arr = res.data.reverse()
                 arr.map(item => {

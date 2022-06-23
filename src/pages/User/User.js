@@ -53,7 +53,7 @@ function User() {
               <div
                 className="content"
               >
-                {/* <PersonalInfo></PersonalInfo> */}
+                <PersonalInfo></PersonalInfo>
               </div>
             }
             {toggleState === 2 &&

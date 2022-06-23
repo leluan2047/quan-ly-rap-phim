@@ -3,6 +3,7 @@ import { axios } from "../../../axios";
 import "./PersonalInfo.scss";
 import { getProfile } from "../../../Service/Staff_service";
 function PersonalInfo() {
+
   const [show, setShow] = useState(false);
   const [oldpass, setOldpass] = useState("");
   const [profile, setProfile] = useState([]);
@@ -10,6 +11,13 @@ function PersonalInfo() {
   const [gioiTinh, setGioiTinh] = useState("");
   const [CMND, setCMND] = useState("");
   const [SDT, setSDT] = useState("");
+
+  const [matKhauCu, setMatKhauCu] = useState();
+  const [matKhauMoi, setMatKhauMoi] = useState();
+  const [XNmatKhau, setXNMatKhau] = useState();
+
+
+
   async function fetchData() {
     let res = await getProfile();
     setTenKH(res.data.khachHang.tenKH);
@@ -20,8 +28,8 @@ function PersonalInfo() {
     setProfile(res.data);
   }
   useEffect(() => {
-      console.log("personInfo render")
-    
+    console.log("personInfo render")
+
     fetchData();
   }, []);
   const handleChange = () => {
@@ -30,47 +38,55 @@ function PersonalInfo() {
       setShow(false);
     }
   };
+
+  const capNhatMatKhau = () => {
+    if (matKhauCu) {
+      if (matKhauCu != localStorage.getItem('password'))
+        window.alert("Mật khẩu cũ sai")
+      else if (matKhauMoi != XNmatKhau)
+        window.alert("Xác nhận mật khẩu sai")
+      else {
+        axios
+          .post("/users/me/change-password", {
+            "oldPassword": matKhauCu,
+            "newPassword": matKhauMoi
+          })
+          .then(res => {
+            if (res.data.message === "Change password success")
+              window.alert("Đổi mật khẩu thành công")
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
+
+    }
+  }
+
+
+
   const handleSubmit = (e) => {
-    var gioiTinh = document.querySelector("input:checked").value
+
     e.preventDefault();
+
+    var gioiTinh = document.querySelector("input:checked").value
     console.log(tenKH, gioiTinh, CMND, SDT);
-    axios.put("/users/me", {tenKH: tenKH, gioiTinh: gioiTinh, CMND: CMND, SDT: SDT})
+    axios.put("/users/me", { tenKH: tenKH, gioiTinh: gioiTinh, CMND: CMND, SDT: SDT })
       .then(result => {
-        console.log(result)
-        alert(result.data.message)
-        //fetchData()
+
+        if (result.data.message === "Update user success")
+          window.alert("Cập nhật thông tin cá nhân thành công")
+
       })
       .catch(error => {
         alert(error.response.data.message)
       })
+
+
   }
   const content = show ? (
-    <div>
-      <div class="old_password">
-        <label for="region_id" class="required ">
-          Mật khẩu cũ&nbsp;<span>*</span>
-        </label>
-        <div class="input-box">
-          <input type="text" value="Binh Son"></input>
-        </div>
-      </div>
-      <div class="new_password">
-        <label for="region_id" class="required ">
-          Mật khẩu mới&nbsp;<span>*</span>
-        </label>
-        <div class="input-box">
-          <input type="text" value="Binh Son"></input>
-        </div>
-      </div>
-      <div class="re_password">
-        <label for="region_id" class="required ">
-          Nhập lại mật khẩu mới&nbsp;<span>*</span>
-        </label>
-        <div class="input-box">
-          <input type="text" value="Binh Son"></input>
-        </div>
-      </div>
-    </div>
+    ""
   ) : null;
   return (
     <>
@@ -79,8 +95,7 @@ function PersonalInfo() {
           <h1>THÔNG TIN CÁ NHÂN</h1>
         </div>
         <form
-          action="https://www.cgv.vn/default/customer/account/editPost/"
-          method="post"
+
           autocomplete="off"
           id="form-validate"
           class="form-PersonnalInfo"
@@ -142,10 +157,23 @@ function PersonalInfo() {
                   Giới tính&nbsp;<span>*</span>
                 </label>
                 <div class="input-box">
-                  <input type="radio" name="gender" value="nam" />
-                  Nam&emsp;
-                  <input type="radio" name="gender" value="nu" />
-                  Nữ
+                  {gioiTinh === "nam" ?
+                    <div>
+                      <input type="radio" name="gender" value="nam" required checked />
+                      Nam&emsp;
+                      <input type="radio" name="gender" value="nu" />
+                      Nữ
+                    </div>
+                    :
+                    <div>
+                      <input type="radio" name="gender" value="nam" required />
+                      Nam&emsp;
+                      <input type="radio" name="gender" value="nu" checked />
+                      Nữ
+
+                    </div>
+                  }
+
                 </div>
               </div>
             </div>
@@ -158,28 +186,19 @@ function PersonalInfo() {
                   <input type="text" defaultValue={CMND} onChange={(e) => setCMND(e.target.value)}></input>
                 </div>
               </div>
-              <div class="change_password">
-                <div class="input-box">
-                  <input
-                    type="checkbox"
-                    name="change_password"
-                    id="change_password"
-                    value="1"
-                    class="checkbox"
-                    checked={show}
-                    onChange={(e) => handleChange(e)}
-                  ></input>
-                  <label>Tôi muốn thay đổi mật khẩu</label>
-                </div>
-              </div>
+
+
+
+
               {content}
+
               <div id="change" className="change">
                 <div class="old_password">
                   <label for="region_id" class="required ">
                     Mật khẩu cũ&nbsp;<span>*</span>
                   </label>
                   <div class="input-box">
-                    <input type="text" value="Binh Son"></input>
+                    <input type="text" ></input>
                   </div>
                 </div>
                 <div class="new_password">
@@ -187,7 +206,7 @@ function PersonalInfo() {
                     Mật khẩu mới&nbsp;<span>*</span>
                   </label>
                   <div class="input-box">
-                    <input type="text" value="Binh Son"></input>
+                    <input type="text" ></input>
                   </div>
                 </div>
                 <div class="re_password">
@@ -195,7 +214,7 @@ function PersonalInfo() {
                     Nhập lại mật khẩu mới&nbsp;<span>*</span>
                   </label>
                   <div class="input-box">
-                    <input type="text" value="Binh Son"></input>
+                    <input type="text" ></input>
                   </div>
                 </div>
               </div>
@@ -203,20 +222,59 @@ function PersonalInfo() {
           </div>
           <div className="div2">
             <div className="option_info">
-              <h3>THÔNG TIN TÙY CHỌN</h3>
-              <hr></hr>
+
+
               <div className="save">
                 <button type="submit" title="Lưu lại" class="button_save">
                   Lưu lại
                 </button>
               </div>
+              <hr></hr>
 
-              <a className="back_link" href="#">
-                <small>« </small> Quay lại
-              </a>
             </div>
           </div>
         </form>
+
+
+        <div className="myInfo-password">
+
+          <h2>Cập nhật mật khẩu</h2>
+
+          <div class="old_password">
+            <label for="region_id" class="required ">
+              Mật khẩu cũ&nbsp;<span>*</span>
+            </label>
+            <div class="input-box">
+              <input type="password" onChange={e => setMatKhauCu(e.target.value)}></input>
+            </div>
+          </div>
+
+          <div class="new_password">
+            <label for="region_id" class="required ">
+              Mật khẩu mới&nbsp;<span>*</span>
+            </label>
+            <div class="input-box">
+              <input type="password" onChange={e => setMatKhauMoi(e.target.value)}></input>
+            </div>
+          </div>
+
+          <div class="re_password">
+            <label for="region_id" class="required ">
+              Nhập lại mật khẩu mới&nbsp;<span>*</span>
+            </label>
+            <div class="input-box">
+              <input type="password" onChange={e => setXNMatKhau(e.target.value)}></input>
+            </div>
+          </div>
+
+          <div className="save">
+            <button type="submit" title="Lưu lại" id="button_pass" onClick={capNhatMatKhau}>
+              Cập nhật mật khẩu
+            </button>
+          </div>
+        </div>
+
+
       </div>
     </>
   );
