@@ -3,7 +3,7 @@ import "./Navbar.scss";
 import logo from '../../../src/logo.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { axios } from "../../axios"
 function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
@@ -17,6 +17,15 @@ function Navbar() {
     }
 
     const logout = () => {
+        axios
+            .get("/users/logout")
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
         localStorage.clear();
         navigate("/")
     }
@@ -79,12 +88,12 @@ function Navbar() {
                         <Link to='/' className='links'>
                             Rạp CGV
                         </Link>
-                        <div className='menu-content'>
+                        {/* <div className='menu-content'>
                             <Link to='/a' className='links'>Rap Viet</Link>
                             <Link to='/b' className='links'>Rap Duc</Link>
                             <Link to='/b' className='links'>Rap Duc</Link>
 
-                        </div>
+                        </div> */}
                     </div>
                     <div className='menu'>
                         <Link to='/' className='links'>

@@ -3,12 +3,12 @@ import { useState } from 'react';
 
 import Login from '../../pages/Login/Login';
 
-import './Login_Register.scss'
+
 
 
 import { Link } from 'react-router-dom';
 import Register from '../../pages/Register/Register';
-
+import './Login_Register.scss'
 function Login_Register() {
     const [toggleState, setToggleState] = useState(1);
 
@@ -30,6 +30,7 @@ function Login_Register() {
                     <Register />
                 </div>
             </div>
+           
         </div>
         
         </>
