@@ -111,6 +111,7 @@ function ListBook() {
                     data.push(x);
                 })
                 setBooking(data);
+                console.log(res)
             })
             .catch(err => {
                 console.log(err)

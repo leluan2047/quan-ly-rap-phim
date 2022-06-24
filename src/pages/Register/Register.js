@@ -124,7 +124,7 @@ function Register() {
     e.preventDefault();
     var gendervalue = document.querySelector("input:checked").value
     console.log({emailvalue,passwordvalue,namevalue,phonevalue,cmndvalue,usernamevalue,birthdayvalue,gendervalue})
-    axios.post('/users/sign-up', {tenKH: namevalue, gioiTinh: gendervalue, CMND: cmndvalue, SDT:phonevalue,email:emailvalue,username:usernamevalue,password:passwordvalue})
+    axios.post('/users/dang-ky', {tenKH: namevalue, gioiTinh: gendervalue, CMND: cmndvalue, SDT:phonevalue,email:emailvalue,username:usernamevalue,password:passwordvalue})
       .then(result => {
                         alert(result.data.message)               
                       })

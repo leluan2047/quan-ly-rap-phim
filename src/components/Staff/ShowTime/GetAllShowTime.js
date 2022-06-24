@@ -6,6 +6,7 @@ import './GetAllShowTime.scss';
 import AddShowTime from './AddShowTime';
 import EditShowTime from './EditShowTime';
 import moment from "moment"
+import { AutoComplete, Input } from 'antd';
 
 function GetAllShowTime() {
     const [openPopup, setOpenPopup] = useState(false);
@@ -13,13 +14,13 @@ function GetAllShowTime() {
     const [id, setId] = useState();
 
     const [showTimes, setShowTimes] = useState([]);
-
+    const [danhSachTK,setDanhSachTK] = useState([])
     const getData = () => {
         axios
             .get('/showtime')
             .then(res => {
                 setShowTimes(res.data);
-
+                setDanhSachTK(res.data)
             })
             .catch(err => {
                 console.log(err);
@@ -54,9 +55,47 @@ function GetAllShowTime() {
         setOpenPopupEdit(true);
         setId(id);
     }
+
+    const handleSearch = (value) => {
+        if (value) {
+
+            let a = danhSachTK.filter(item => {
+
+                let tenPhimTK =
+                    item.tenSuatChieu.toLowerCase().includes(value.toLowerCase())
+                    ||
+                    item.lichChieu.ngayChieu.toLowerCase().includes(value.toLowerCase())
+                    ||
+                    item.timeStart.toLowerCase().includes(value.toLowerCase())
+                    ||
+                    item.timeEnd.toLowerCase().includes(value.toLowerCase())
+                    ||
+                    item.trangThai.toLowerCase().includes(value.toLowerCase())
+
+                return tenPhimTK;
+            })
+            setShowTimes(a)
+        }
+        else {
+            setShowTimes(danhSachTK);
+        }
+    };
     return (
         <div className='showTime-container'>
             <button className='btn-add' onClick={() => setOpenPopup(true)}><AddIcon />Add new</button>
+            <div>
+                <br>
+                </br>
+
+                <AutoComplete
+
+                    onSearch={handleSearch}
+                >
+                    <Input.Search size="large" placeholder="Tìm kiếm theo từ khóa" enterButton />
+                </AutoComplete>
+                <br></br>
+                <br></br>
+            </div>
             <table id="showtime">
                 <tr>
                     <th width="7%" >Lịch chiếu</th>

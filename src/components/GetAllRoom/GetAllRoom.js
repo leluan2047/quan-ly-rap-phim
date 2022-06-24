@@ -5,6 +5,7 @@ import AddRoom from "../AddRoom/AddRoom";
 import { axios } from "../../axios";
 import "./GetAllRoom.scss";
 import EditRoom from '../EditRoom/EditRoom';
+import { AutoComplete, Input } from 'antd';
 
 function GetAllRoom() {
     const [openPopup, setOpenPopup] = useState(false);
@@ -12,17 +13,17 @@ function GetAllRoom() {
     const [id, setId] = useState();
 
     const [rooms, setRooms] = useState([]);
-
+    const [danhSachTK,setDanhSachTK] = useState([])
     const getData = () => {
         axios
             .get('/rooms')
             .then(function (res) {
-                
-                var datarooms=  res.data.filter((dataroom) =>
-                {
-                    return dataroom.trangThai ==='active'
+
+                var datarooms = res.data.filter((dataroom) => {
+                    return dataroom.trangThai === 'active'
                 })
                 setRooms(datarooms);
+                setDanhSachTK(datarooms)
             })
             .catch(function (err) {
                 console.log(err)
@@ -34,11 +35,11 @@ function GetAllRoom() {
         axios
             .delete(`rooms/${id}`)
             .then(function (res) {
-                if (res.data.message === "Delete room successfully"){
+                if (res.data.message === "Delete room successfully") {
                     window.alert("Xóa thành công");
                     getData();
                 }
-                else{
+                else {
                     window.alert("Xóa thất bại");
                 }
             })
@@ -57,9 +58,43 @@ function GetAllRoom() {
         setOpenPopupEdit(true);
         setId(id);
     }
+
+    const handleSearch = (value) => {
+        if (value) {
+
+            let a = danhSachTK.filter(item => {
+
+                let tenPhimTK =
+                    item.tenPhong.toLowerCase().includes(value.toLowerCase())
+                    ||
+                    item.trangThai.toLowerCase().includes(value.toLowerCase())
+                   
+
+                return tenPhimTK;
+            })
+            setRooms(a)
+        }
+        else {
+            setRooms(danhSachTK);
+        }
+    };
+
     return (
         <div className=''>
             <button className='btn-add' onClick={() => setOpenPopup(true)}><AddIcon />Add new</button>
+            <div>
+                <br>
+                </br>
+
+                <AutoComplete
+
+                    onSearch={handleSearch}
+                >
+                    <Input.Search size="large" placeholder="Tìm kiếm theo từ khóa" enterButton />
+                </AutoComplete>
+                <br></br>
+                <br></br>
+            </div>
             <table id="movies">
                 <tr>
                     <th width="7%" >Tên phòng</th>
