@@ -73,7 +73,7 @@ function ListBook() {
             width: 100,
             render: (record) => <div >
                 <button className='btn-edit' onClick={e=>editBooking(record.id)} ><i className='fas fa-pencil-alt' ></i></button>&ensp;&ensp;
-                <button className='btn-delete' onClick={e=>deleteData(record.id)}><i className='fas fa-trash'></i></button>
+               
             </div>,
         },
     
@@ -111,6 +111,8 @@ function ListBook() {
                     data.push(x);
                 })
                 setBooking(data);
+                console.log(res)
+                console.log(localStorage.getItem('maUser'))
             })
             .catch(err => {
                 console.log(err)

@@ -78,6 +78,7 @@ function Book(props) {
             .get('/ticketType')
             .then(res => {
                 setDanhSachLoaiVe(res.data)
+                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -110,8 +111,8 @@ function Book(props) {
                 .then(res => {
                     var x = [" "]
                     x.push(res.data)
-                    var y =[]
-                    y = x.filter(item => item!=" ");
+                    var y = []
+                    y = x.filter(item => item != " ");
                     setDanhSachPhim(y)
                 })
                 .catch(err => {
@@ -180,12 +181,56 @@ function Book(props) {
 
             <form className='book-form' name='' id='' onSubmit={handleSubmit} >
 
+                <label for="maphim">Phim <span>*</span></label>
+                <Carousel breakPoints={breakPoints}>
+                    {/* {
+                        movies.map(item => {
+                            return (
+                                <MediaCard image={item.poster} id={item.id}></MediaCard>
+                            );
+                        })
+                    } */}
+
+                    {
+                        danhSachPhim.map(item => {
+                            return (
+                                <div className="cardFilm"
+                                    onClick={e => setMaphim(item.id)}
+                                    style={item.id == maphim ? { border: '2px solid green' } : {}}
+                                >
+
+                                    <CardFilm
+                                        key={item.id}
+                                        tenPhim={item.tenPhim}
+                                        thoiLuong={item.thoiLuong}
+                                        trangThai={item.trangThai}
+                                        theLoai={item.theLoaiPhim.tenTheLoai}
+                                        img={item.poster}
+                                    ></CardFilm>
+
+                                </div>
+                            );
+                        })
+                    }
+                </Carousel>
+                <select name='maphim' value={maphim} required disabled  >
+                    <option value="">Bạn chưa chọn phim</option>
+                    {danhSachPhim.map(item => {
+                        return (
+                            <option key={item.id} value={item.id}>{item.tenPhim}</option>
+                        )
+                    })}
+                </select>
+
+
+
+
                 <label for="maloaive">Loại vé<span>*</span></label>
                 <select name='maloaive' onChange={e => setMaloaive(e.target.value)} required >
                     <option value="">Chọn loại vé</option>
                     {danhSachLoaiVe.map(item => {
                         return (
-                            <option key={item.id} value={item.id}>{item.tenLoaiVe}</option>
+                            <option key={item.id} value={item.id}>{item.tenLoaiVe}-{item.giaVe}</option>
                         )
                     })}
                 </select>
@@ -264,49 +309,17 @@ function Book(props) {
                 </select> */}
 
 
-                <label for="maphim">Phim <span>*</span></label>
-                <Carousel breakPoints={breakPoints}>
-                    {/* {
-                        movies.map(item => {
-                            return (
-                                <MediaCard image={item.poster} id={item.id}></MediaCard>
-                            );
-                        })
-                    } */}
 
-                    {
-                        danhSachPhim.map(item => {
-                            return (
-                                <div className="cardFilm"
-                                    onClick={e => setMaphim(item.id)}
-                                    style={item.id == maphim ? { border: '2px solid green' } : {}}
-                                >
-
-                                    <CardFilm
-                                        key={item.id}
-                                        tenPhim={item.tenPhim}
-                                        thoiLuong={item.thoiLuong}
-                                        trangThai={item.trangThai}
-                                        theLoai={item.theLoaiPhim.tenTheLoai}
-                                        img={item.poster}
-                                    ></CardFilm>
-
-                                </div>
-                            );
-                        })
-                    }
-                </Carousel>
-                <select name='maphim' value={maphim} required disabled  >
-                    <option value="">Bạn chưa chọn phim</option>
-                    {danhSachPhim.map(item => {
+                {/* <label for="maghe">Mã ghế <span>*</span></label>
+                <input type="text" id="maghe" name="maghe" class="input-add" placeholder="Mã ghế" required  onChange={(e) => setMaghe(e.target.value)}></input> */}
+                <select name='maphim' value={maloaive} required disabled  >
+                    <option value="">Bạn chưa chọn</option>
+                    {danhSachLoaiVe.map(item => {
                         return (
-                            <option key={item.id} value={item.id}>{item.tenPhim}</option>
+                            <option key={item.id} value={item.id}>Tổng tiền: {item.giaVe * maghe.length} VND</option>
                         )
                     })}
                 </select>
-                {/* <label for="maghe">Mã ghế <span>*</span></label>
-                <input type="text" id="maghe" name="maghe" class="input-add" placeholder="Mã ghế" required  onChange={(e) => setMaghe(e.target.value)}></input> */}
-
 
                 <div className='submit-add'>
                     <input type='submit' value='Đặt vé'></input>

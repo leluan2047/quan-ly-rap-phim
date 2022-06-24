@@ -97,6 +97,7 @@ function EditBook(props) {
                 setMaphong(res.data.ve.phongChieu.id)
                 setMaphim(res.data.ve.phim.id);
                 setMaghe(res.data.ve.ghe.id)
+                
             })
             .catch(err => {
                 console.log(err)
@@ -130,6 +131,7 @@ function EditBook(props) {
     }
 
     useEffect(() => {
+        
         getData();
 
     }, [])
@@ -180,7 +182,9 @@ function EditBook(props) {
                     getGhe(e.target.value);
 
                 }
-                } required value={maphong}>
+                } required value={maphong}
+
+                >
                     <option value="">Chọn phòng</option>
                     {danhSachPhong.map(item => {
                         return (
