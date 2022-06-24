@@ -31,12 +31,7 @@ function EditTicketType({ticketType}) {
       </div> */}
             <form className='formedittickettype' name = 'cgv-signup-form' id='cgv-signup-form' onSubmit={handleSubmit} >
             <label for="tenloaive">Tên loại vé<span>*</span></label>
-                <select name="tenloaive" id="tenloaive" defaultValue={tenLoaiVe}  onChange={(e) => setTenloaiVe(e.target.value)}required>
-                <option value="">--Chọn loại vé--</option>
-                  <option value="sv">Vé VIP</option>
-                  <option value="adult">Vé người lớn</option>
-                  <option value="child">Vé trẻ em</option>
-                </select>
+            <input type="text" id="loaive" name="loaive" class="input-add" placeholder="Tên loại vé" required  defaultValue={tenLoaiVe} onChange={(e) => setGiaVe(e.target.value)}></input>
                 <label for="giave">Giá vé(VNĐ) <span>*</span></label>
                 <input type="text" id="giave" name="giave" class="input-add" placeholder="Giá vé" required  defaultValue={giaVe} onChange={(e) => setGiaVe(e.target.value)}></input>   
                 <label for="trangthai">Trạng thái<span>*</span></label>
