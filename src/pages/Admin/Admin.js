@@ -38,7 +38,7 @@ function Admin() {
                             <li> <Link className={toggleState === 11 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(11)} to='#'>SHOWTIME</Link></li>
                             <li> <Link className={toggleState === 8 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(8)} to='#'>ROOM</Link></li>
                             <li> <Link className={toggleState === 9 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(9)} to='#'>TICKET TYPE</Link></li>
-                            <li> <Link className={toggleState === 10 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(10)} to='#'>TICKET</Link></li>
+                          
                             
                         </ul>
                     </div>
