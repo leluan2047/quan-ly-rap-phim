@@ -12,7 +12,7 @@ export default function ListTicketType() {
     async function fetchData()
             {
                 let res = await getAllTicketTpye();
-                setTicketTypes(res.data)
+                setTicketTypes(res)
             }
     useEffect( () =>
         {

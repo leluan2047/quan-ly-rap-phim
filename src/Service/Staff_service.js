@@ -30,9 +30,14 @@ const getAllPosition = () =>
 {
     return axios.get("/positions")
 }
-const getAllTicketTpye = () =>
+const getAllTicketTpye = async() =>
 {
-    return axios.get("/ticketType")
+    //return axios.get("/ticketType")
+    var ticketTypes = await (await axios.get("/ticketType")).data.filter((ticketType) =>
+    {
+        return ticketType.trangThai === 'active'
+    })
+    return ticketTypes
 }
 const getAllTicket = () =>
 {

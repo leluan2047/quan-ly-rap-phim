@@ -98,7 +98,6 @@ function Login() {
               {/* <input type='submit' id ='cgv-btnlogin' value='Đăng nhập' onClick={(e) =>Validate(e)}></input> */}
               <input type='submit' id='cgv-btnlogin' value='Đăng nhập' ></input>
             </div>
-            <div className='cgv-login-forgotp-link'> <Link to="/forgot" className='href '>Bạn muốn tìm lại mật khẩu?</Link></div>
             <div className='cgv-login-forgotp-link'></div>
           </form>
         </div>

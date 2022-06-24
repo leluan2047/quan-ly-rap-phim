@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { axios } from '../../../../axios';
 import './CreateSchedule.scss'
-
+import moment from 'moment'
 function CreateSchedule() {
 
   const [maphong, setMaphong] = useState("")
@@ -34,7 +34,8 @@ function CreateSchedule() {
         .post('/schedule', {
           maPhong: maphong,
           maPhim: maphim,
-          ngayChieu: ngaychieu + ".000z"
+          //ngayChieu: ngaychieu + ".000z"
+          ngayChieu: moment.utc(ngaychieu).format('YYYY-MM-DDTHH:mm:ss')
         })
         .then(result => {
           console.log(result)

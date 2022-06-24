@@ -50,8 +50,8 @@ function AddShowTime() {
                 .post('/showtime', {
                     "maLichChieu": lichChieu,
                     "tenSuatChieu": tenSuatChieu,
-                    "timeStart": thoiGianBatDau + ".000z",
-                    "timeEnd": thoiGianKetThuc + ".000z"
+                    "timeStart": moment.utc(thoiGianBatDau).format('YYYY-MM-DDTHH:mm:ss'),
+                    "timeEnd": moment.utc(thoiGianKetThuc).format('YYYY-MM-DDTHH:mm:ss') 
                 })
                 .then(res => {
                     if (res.data.message === "Create showtime successfully")
