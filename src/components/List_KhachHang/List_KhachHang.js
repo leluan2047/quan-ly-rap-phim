@@ -34,18 +34,9 @@ export default function List_movie() {
                     <th width="15%">Giới tính</th>
                     <th width="15%">CMND</th>
                     <th width="15%">SĐT</th>
-                    <th width="15%" colSpan={2}>Hành động</th>
                 </tr>
                 {khachHangs.map(khachHang => (<tr> <KhachHang khachHang={khachHang} handleReloadComponent={fetchData} /></tr>))}
             </table>
-            <Popup
-                title="Add user"
-                openPopup={openPopup}
-                setOpenPopup={setOpenPopup}
-                handleReloadComponent={fetchData}
-            >
-                {/* <Add_movie openPopup = {openPopup}></Add_movie> */}
-            </Popup>
 
         </>
     )
