@@ -42,7 +42,7 @@ function PhimDangChieu() {
                                 img={item.poster}
                                 tenPhim={item.tenPhim}
                                 thoiLuong={item.thoiLuong}
-                                theLoai={item.theLoai}
+                                theLoai={item.theLoaiPhim.tenTheLoai}
                                 trangThai={item.trangThai}
                             >
                             </CardFilm>

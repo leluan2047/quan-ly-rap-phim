@@ -23,16 +23,6 @@ const KhachHang = (props) => {
             <td>{props.khachHang.gioiTinh} </td>
             <td>{props.khachHang.CMND}</td>
             <td>{props.khachHang.SDT} </td>
-            <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt' ></i></button></td>
-            <td><button className='btn-delete' onClick={() => DeleteKhachHang()}><i className='fas fa-trash'></i></button></td>
-            <Popup
-                title="Edit movie"
-                openPopup={openPopup}
-                setOpenPopup={setOpenPopup}
-                handleReloadComponent={props.handleReloadComponent}
-            >
-               {/* <Edit_movie movie={movie}></Edit_movie> */}
-            </Popup>
         </>
     );
 };

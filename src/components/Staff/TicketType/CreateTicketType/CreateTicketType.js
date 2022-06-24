@@ -28,12 +28,7 @@ function CreateTicketType() {
       </div> */}
             <form className='formcreatepositon' name = 'cgv-signup-form' id='cgv-signup-form' onSubmit={handleSubmit} >
             <label for="tenloaive">Tên loại vé<span>*</span></label>
-                <select name="tenloaive" id="tenloaive" onChange={(e) => setTenloaive(e.target.value)}required>
-                <option value="">--Chọn loại vé--</option>
-                  <option value="sv">Vé VIP</option>
-                  <option value="adult">Vé người lớn</option>
-                  <option value="child">Vé trẻ em</option>
-                </select>
+                <input name="tenloaive" className="tenloaive" required onChange={(e) => setTenloaive(e.target.value)} ></input>
                 <label for="giave">Giá vé(VNĐ) <span>*</span></label>
                 <input type="text" id="giave" name="giave" class="input-add" placeholder="Giá vé" required  onChange={(e) => setGiave(e.target.value)}></input>   
             <div className='submit-add'>

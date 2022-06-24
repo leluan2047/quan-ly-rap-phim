@@ -36,7 +36,7 @@ function EditCategory({category}) {
                  <option value="deleted">deleted</option>
                 </select>
             <div className='submit-add'>
-            <input type='submit' id ='cgv-btnlogin'  value='Add new category'></input>
+            <input type='submit' id ='cgv-btnlogin'  value='Edit category'></input>
             </div>
             </form>
     </div>

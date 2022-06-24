@@ -14,10 +14,10 @@ const Category = (props) => {
     .then(result => {
                     props.handleReloadComponent();
                       console.log(result) 
+                      alert(result.data.message)
                     })
     .catch( error =>{    
-                     console.log(error)  
-                               
+                     console.log(error)         
                      })  
     }
     return (
