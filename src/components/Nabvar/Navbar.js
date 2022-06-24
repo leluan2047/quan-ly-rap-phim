@@ -46,7 +46,7 @@ function Navbar() {
                 <div className='container-menu' >
                     {
                         localStorage.getItem("userName") != null ?
-                            <Link to='/user' className='links' style={{ width: "50px" }}>
+                            <Link to={localStorage.getItem('role') === "admin" ? "/admin" : "/user"} className='links' style={{ width: "50px" }}>
                                 <i class="fa-solid fa-user"></i> Xin chào {localStorage.getItem("userName")},
                             </Link>
 
@@ -71,12 +71,12 @@ function Navbar() {
             <div className='navbar-menu'>
                 <div className='left-logo'>
                     <Link to='/' className='links'>
-                        <div style={{width:'150px',height:'150px'}}>
-                            <img style={{width:'100%',height:'100%',objectFit:"contain"}}
-                             src={logo}
-                             >
+                        <div style={{ width: '150px', height: '150px' }}>
+                            <img style={{ width: '100%', height: '100%', objectFit: "contain" }}
+                                src={logo}
+                            >
 
-                             </img>
+                            </img>
                         </div>
                     </Link>
                 </div>

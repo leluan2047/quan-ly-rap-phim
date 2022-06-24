@@ -14,22 +14,41 @@ function EditSchedule({ schedule }) {
   const [danhSachPhong, setDanhSachPhong] = useState([]);
   const [danhSachPhim, setDanhSachPhim] = useState([]);
 
+
+  const checkDay = () => {
+    var startTime = new Date(ngaychieu)
+
+    var toDay = new Date();
+
+    if (startTime < toDay) {
+      window.alert("Không thể chọn ngày bắt đầu trước hiện tại");
+      return false;
+    }
+
+    else
+      return true;
+  }
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(ngaychieu, maphim, maphong, trangthai);
-    axios.put(`/schedule/${schedule.id}`, {
-      maPhong: maphong,
-      maPhim: maphim,
-      ngayChieu: ngaychieu,
-      trangThai: trangthai
-    })
-      .then(result => {
-        console.log(result)
-        alert(result.data.message)
+    if (checkDay()) {
+      console.log(ngaychieu, maphim, maphong, trangthai);
+      axios.put(`/schedule/${schedule.id}`, {
+        maPhong: maphong,
+        maPhim: maphim,
+        ngayChieu: ngaychieu,
+        trangThai: trangthai
       })
-      .catch(error => {
-        alert(error.response.data.message)
-      })
+        .then(result => {
+          console.log(result)
+          alert(result.data.message)
+        })
+        .catch(error => {
+          alert(error.response.data.message)
+        })
+    }
+
   }
 
   const getData = () => {

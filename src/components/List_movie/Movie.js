@@ -1,21 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import Popup from "../Popup";
 import Edit_movie from '../Edit_movie/Edit_movie'
-import {axios} from '../../axios';
+import { axios } from '../../axios';
 const Movie = (props) => {
     const [openPopup, setOpenPopup] = useState(false)
-    const DeleteMovie = () =>
-    {
+    
+    const DeleteMovie = () => {
         console.log(props.movie.id)
         axios.delete(`/movies/${props.movie.id}`)
-    .then(result => {
-                    props.handleReloadComponent();
-                      console.log(result) 
-                    alert("Delete successfully")
-                    })
-    .catch( error =>{    
-                     console.log(error)             
-                     })  
+            .then(result => {
+                props.handleReloadComponent();
+                console.log(result)
+                alert("Delete successfully")
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <>
@@ -28,15 +28,15 @@ const Movie = (props) => {
             <td>{props.movie.trailer} </td>
             <td>{props.movie.poster}</td>
             <td>{props.movie.trangThai}</td>
-            <td><button className='btn-edit'onClick={() =>setOpenPopup(true)}><i className='fas fa-pencil-alt' ></i></button></td>
+            <td><button className='btn-edit' onClick={() => setOpenPopup(true)}><i className='fas fa-pencil-alt' ></i></button></td>
             <td><button className='btn-delete' onClick={() => DeleteMovie()}><i className='fas fa-trash'></i></button></td>
             <Popup
                 title="Edit movie"
                 openPopup={openPopup}
                 setOpenPopup={setOpenPopup}
-                handleReloadComponent = {props.handleReloadComponent}
+                handleReloadComponent={props.handleReloadComponent}
             >
-               <Edit_movie movie={props.movie} allcategory={props.allcategory}></Edit_movie>
+                <Edit_movie movie={props.movie} allcategory={props.allcategory}></Edit_movie>
             </Popup>
         </>
     );

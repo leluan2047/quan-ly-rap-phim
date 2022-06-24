@@ -13,7 +13,7 @@ import GetAllRoom from '../../components/GetAllRoom/GetAllRoom';
 import ListTicketType from '../../components/Staff/TicketType/ListTicketType/ListTicketType'
 import ListTicket from '../../components/Staff/Ticket/ListTicket/ListTicket';
 import Booking from '../../components/Staff/ByTicket/Booking';
-
+import GetAllShowTime from "../../components/Staff/ShowTime/GetAllShowTime"
 function Admin() {
     const [toggleState, setToggleState] = useState(1);
     const toggleTab = (index) => {
@@ -35,9 +35,11 @@ function Admin() {
                             <li> <Link className={toggleState === 5 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(5)} to='#'>ADVERTISEMENT</Link></li>
                             <li> <Link className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)} to='#'>CATEGORY</Link></li>
                             <li> <Link className={toggleState === 7 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(7)} to='#'>SCHEDULE</Link></li>
+                            <li> <Link className={toggleState === 11 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(11)} to='#'>SHOWTIME</Link></li>
                             <li> <Link className={toggleState === 8 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(8)} to='#'>ROOM</Link></li>
                             <li> <Link className={toggleState === 9 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(9)} to='#'>TICKET TYPE</Link></li>
                             <li> <Link className={toggleState === 10 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(10)} to='#'>TICKET</Link></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -78,11 +80,17 @@ function Admin() {
                                 <ListSchedule />
                             </div>
                         }
+                         {toggleState === 11 &&
+                            <div className="content">
+                                <GetAllShowTime></GetAllShowTime>
+                            </div>
+                        }
                         {toggleState === 8 &&
                             <div className="content">
                                 <GetAllRoom></GetAllRoom>
                             </div>
                         }
+                        
                         {toggleState === 9 &&
                             <div className="content">
                                 <ListTicketType></ListTicketType>

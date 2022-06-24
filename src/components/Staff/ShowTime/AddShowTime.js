@@ -23,27 +23,48 @@ function AddShowTime() {
             })
     }
 
+    const checkDay = () => {
+        var startTime = new Date(thoiGianBatDau)
+        var endTime = new Date(thoiGianKetThuc);
+        var toDay = new Date();
+
+        if (startTime < toDay) {
+            window.alert("Không thể chọn ngày bắt đầu trước hiện tại");
+            return false;
+        }
+
+        else if (startTime >= endTime) {
+            window.alert("Thời gian kết thúc phải sau thời gian bắt đầu")
+            return false;
+        }
+
+        else
+            return true;
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios
-            .post('/showtime', {
-                "maLichChieu": lichChieu,
-                "tenSuatChieu": tenSuatChieu,
-                "timeStart": thoiGianBatDau + ".000z",
-                "timeEnd": thoiGianKetThuc + ".000z"
-            })
-            .then(res => {
-                if(res.data.message === "Create showtime successfully")
-                    window.alert("Thêm suất chiếu thành công")
-                else{
-                    window.alert("Thêm thất bại")
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        
+        if (checkDay()) {
+            axios
+                .post('/showtime', {
+                    "maLichChieu": lichChieu,
+                    "tenSuatChieu": tenSuatChieu,
+                    "timeStart": thoiGianBatDau + ".000z",
+                    "timeEnd": thoiGianKetThuc + ".000z"
+                })
+                .then(res => {
+                    if (res.data.message === "Create showtime successfully")
+                        window.alert("Thêm suất chiếu thành công")
+                    else {
+                        window.alert("Thêm thất bại")
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
     }
 
     useEffect(() => {

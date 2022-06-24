@@ -40,6 +40,7 @@ export default function List_movie() {
         <>
             <button className='btn-add' onClick={() => setOpenPopup(true)}><AddIcon />Add new</button>
             <table id="movies">
+                    
                 <tr>
                     <th width="15%" >Tên phim </th>
                     <th width="15%">Nội dung</th>

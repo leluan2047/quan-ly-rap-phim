@@ -45,14 +45,15 @@ function Login() {
   // }
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     axios.post('/users/sign-in', { username: usernamevalue, password: passwordvalue })
       .then(result => {
         console.log(result)
-        localStorage.setItem('password',passwordvalue);
+        localStorage.setItem('password', passwordvalue);
+        localStorage.setItem('role',result.data.user.type);
         localStorage.setItem('token', result.data.token)
         localStorage.setItem('userName', result.data.user.username)
-        localStorage.setItem('maUser',result.data.user.id)
+        localStorage.setItem('maUser', result.data.user.id)
         alert(result.data.message)
         if (result.data.user.type === 'admin') {
           navigate('/admin')
@@ -64,9 +65,17 @@ function Login() {
       .catch(error => {
         console.log(error)
         alert(error.response.data.message)
-      }
+      })
 
-      )
+    // axios
+    //   .get("/ticket")
+    //   .then(res=>{
+    //     console.log(res)
+    //   })
+    //   .catch(err=>{
+    //     console.log(err)
+    //   })
+
   }
   return (
     <>

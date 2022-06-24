@@ -20,9 +20,9 @@
 
             .bloc-tabs {
                 padding-left: 10px;
-                
-                
-               
+
+
+
                 // margin-left: -20px;
                 li {
                     text-transform: uppercase;
@@ -48,7 +48,7 @@
                     text-decoration: none;
                     height: auto;
                     margin-bottom: 30px;
-                   
+
                 }
 
                 .active-tabs {
@@ -73,21 +73,16 @@
                 background: white;
                 width: 100%;
                 height: 100%;
-                
-
 
             }
 
-            .active-content {
-                
-
-            }
         }
     }
-   
+
 }
-@media screen and (max-width: 900px){
-    .menu-user{
+
+@media screen and (max-width: 900px) {
+    .menu-user {
         margin-top: 250px;
     }
 }

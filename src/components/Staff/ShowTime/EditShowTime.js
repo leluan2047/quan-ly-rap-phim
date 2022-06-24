@@ -46,29 +46,53 @@ function EditShowTime(props) {
         getData();
     }, [])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const fetchData = () => {
-            axios
-                .put(`/showtime/${props.id}`, {
-                    "maLichChieu": maLichChieu,
-                    "tenSuatChieu": tenSuatChieu,
-                    "timeStart": thoiGianBatDau + ".000z",
-                    "timeEnd": thoiGianKetThuc + ".000z"
-                })
-                .then(res => {
-                    if (res.data.message === "Update showtime successfully")
-                        window.alert("Cập nhật suất chiếu thành công")
-                    else {
-                        window.alert("Cập nhật suất chiếu thất bại")
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+
+
+    const checkDay = () => {
+        var startTime = new Date(thoiGianBatDau)
+        var endTime = new Date(thoiGianKetThuc);
+        var toDay = new Date();
+
+        if (startTime < toDay) {
+            window.alert("Không thể chọn ngày bắt đầu trước hiện tại");
+            return false;
         }
 
-        fetchData();
+        else if (startTime >= endTime) {
+            window.alert("Thời gian kết thúc phải sau thời gian bắt đầu")
+            return false;
+        }
+
+        else
+            return true;
+    }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (checkDay()) {
+            const fetchData = () => {
+                axios
+                    .put(`/showtime/${props.id}`, {
+                        "maLichChieu": maLichChieu,
+                        "tenSuatChieu": tenSuatChieu,
+                        "timeStart": thoiGianBatDau + ".000z",
+                        "timeEnd": thoiGianKetThuc + ".000z"
+                    })
+                    .then(res => {
+                        if (res.data.message === "Update showtime successfully")
+                            window.alert("Cập nhật suất chiếu thành công")
+                        else {
+                            window.alert("Cập nhật suất chiếu thất bại")
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
+
+            fetchData();
+        }
         // console.log(thoiGianBatDau)
     }
 

@@ -12,22 +12,38 @@ function CreateSchedule() {
   const [danhSachPhong, setDanhSachPhong] = useState([]);
   const [danhSachPhim, setDanhSachPhim] = useState([]);
 
+  const checkDay = () => {
+    var startTime = new Date(ngaychieu)
+
+    var toDay = new Date();
+
+    if (startTime < toDay) {
+      window.alert("Không thể chọn ngày bắt đầu trước hiện tại");
+      return false;
+    }
+
+    else
+      return true;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(ngaychieu);
-    axios
-      .post('/schedule', {
-        maPhong: maphong,
-        maPhim: maphim,
-        ngayChieu: ngaychieu + ".000z"
-      })
-      .then(result => {
-        console.log(result)
-        alert(result.data.message)
-      })
-      .catch(error => {
-        alert(error.response.data.message)
-      })
+
+    if (checkDay()) {
+      axios
+        .post('/schedule', {
+          maPhong: maphong,
+          maPhim: maphim,
+          ngayChieu: ngaychieu + ".000z"
+        })
+        .then(result => {
+          console.log(result)
+          alert(result.data.message)
+        })
+        .catch(error => {
+          alert(error.response.data.message)
+        })
+    }
   }
 
   const getData = () => {
@@ -44,7 +60,7 @@ function CreateSchedule() {
       .get('/movies')
       .then(res => {
         setDanhSachPhim(res.data)
-        
+
       })
       .catch(err => {
         console.log(err)
