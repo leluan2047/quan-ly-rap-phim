@@ -40,7 +40,7 @@ function Details_movie({ id }) {
                         <div>
                             <div class="std"><label>Đạo diễn: </label> &nbsp;{movie.daoDien}</div>
                             {/* <div class="std"><label>Diễn viên:</label>&nbsp; {movie.theLoai}</div> */}
-                            <div class="std"><label>Thể loại: </label>&nbsp; {movie.maTheLoai}</div>
+                            <div class="std"><label>Thể loại: </label>&nbsp; {movie.theLoaiPhim.tenTheLoai}</div>
                             {/* <div class="std"><label>Khởi chiếu: </label>&nbsp; 04/05/2022</div> */}
                             <div class="std"><label>Thời lượng: </label>&nbsp; {movie.thoiLuong}</div>
                             <div class="std"><label>Trailer </label>&nbsp; {movie.trailer}</div>
