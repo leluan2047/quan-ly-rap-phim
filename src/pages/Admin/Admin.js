@@ -32,12 +32,12 @@ function Admin() {
                             <li> <Link className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)} to='#'>QUẢN LÝ PHIM</Link></li>
                             <li> <Link className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)} to='#'>QUẢN LÝ KHÁCH HÀNG</Link></li>
                             {/* <li> <Link className={toggleState === 4 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(4)} to='#'>POSITION</Link></li> */}
-                            <li> <Link className={toggleState === 5 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(5)} to='#'>ADVERTISEMENT</Link></li>
-                            <li> <Link className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)} to='#'>CATEGORY</Link></li>
-                            <li> <Link className={toggleState === 7 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(7)} to='#'>SCHEDULE</Link></li>
-                            <li> <Link className={toggleState === 11 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(11)} to='#'>SHOWTIME</Link></li>
-                            <li> <Link className={toggleState === 8 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(8)} to='#'>ROOM</Link></li>
-                            <li> <Link className={toggleState === 9 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(9)} to='#'>TICKET TYPE</Link></li>
+                            <li> <Link className={toggleState === 5 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(5)} to='#'>QUẢNG CÁO</Link></li>
+                            <li> <Link className={toggleState === 6 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(6)} to='#'>THỂ LOẠI PHIM</Link></li>
+                            <li> <Link className={toggleState === 7 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(7)} to='#'>LỊCH CHIẾU</Link></li>
+                            <li> <Link className={toggleState === 11 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(11)} to='#'>SUÂT CHIẾU</Link></li>
+                            <li> <Link className={toggleState === 8 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(8)} to='#'>QUẢN LÝ PHÒNG</Link></li>
+                            <li> <Link className={toggleState === 9 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(9)} to='#'>LOẠI VÉ</Link></li>
                           
                             
                         </ul>

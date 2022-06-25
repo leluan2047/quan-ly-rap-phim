@@ -10,7 +10,8 @@
 
     .navbar-menu {
         background-image: url('../../images/navbar.png');
-        background-repeat: no-repeat;
+        border: 3px solid red;
+        // background-repeat: no-repeat;
         background-size: auto;
         display: flex;
         align-items: center;
