@@ -13,8 +13,18 @@ function Details_movie({ id }) {
             async function fetchData() {
                 await axios.get(`/movies/${id}`)
                     .then(result => {
-                        console.log(result)
-                        setMovie(result.data)
+                        let a = {
+                            daoDien:result.data.daoDien,
+                            noiDungPhim:result.data.noiDungPhim,
+                            nuocSanXuat:result.data.nuocSanXuat,
+                            poster:result.data.poster,
+                            tenPhim:result.data.tenPhim,
+                            theLoaiPhim:result.data.theLoaiPhim.tenTheLoai,
+                            thoiLuong:result.data.thoiLuong,
+                            trailer:result.data.trailer,
+                            trangThai:result.data.trangThai
+                        }
+                        setMovie(a)
                     })
                     .catch(error => {
                         console.log(error)
@@ -40,7 +50,7 @@ function Details_movie({ id }) {
                         <div>
                             <div class="std"><label>Đạo diễn: </label> &nbsp;{movie.daoDien}</div>
                             {/* <div class="std"><label>Diễn viên:</label>&nbsp; {movie.theLoai}</div> */}
-                            <div class="std"><label>Thể loại: </label>&nbsp; {movie.theLoaiPhim.tenTheLoai}</div>
+                            <div class="std"><label>Thể loại: </label>&nbsp; {movie.theLoaiPhim}</div>
                             {/* <div class="std"><label>Khởi chiếu: </label>&nbsp; 04/05/2022</div> */}
                             <div class="std"><label>Thời lượng: </label>&nbsp; {movie.thoiLuong}</div>
                             <div class="std"><label>Trailer </label>&nbsp; {movie.trailer}</div>
