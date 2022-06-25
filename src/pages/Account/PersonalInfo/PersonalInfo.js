@@ -190,8 +190,8 @@ function PersonalInfo() {
 
 
 
-              {content}
-
+              {/* {content} */}
+{/* 
               <div id="change" className="change">
                 <div class="old_password">
                   <label for="region_id" class="required ">
@@ -217,7 +217,7 @@ function PersonalInfo() {
                     <input type="text" ></input>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="div2">
@@ -229,14 +229,14 @@ function PersonalInfo() {
                   Lưu lại
                 </button>
               </div>
-              <hr></hr>
+            {/* <hr></hr> */}
 
             </div>
           </div>
         </form>
 
 
-        <div className="myInfo-password">
+        {/* <div className="myInfo-password">
 
           <h2>Cập nhật mật khẩu</h2>
 
@@ -272,7 +272,7 @@ function PersonalInfo() {
               Cập nhật mật khẩu
             </button>
           </div>
-        </div>
+        </div> */}
 
 
       </div>
